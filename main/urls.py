@@ -53,4 +53,7 @@ urlpatterns = [
     # FAQ
     path('faq/', FAQListView.as_view(), name='faq'),
 
+    # Footer
+    path('footer/', FooterListView.as_view(), name='footer'),
+
 ]

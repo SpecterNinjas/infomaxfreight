@@ -85,3 +85,8 @@ class PrivacyPolicyListView(ListAPIView):
 class FAQListView(ListAPIView):
     queryset = FAQ.objects.filter(draft=False).order_by('-created')
     serializer_class = FAQSerializer
+
+
+class FooterListView(ListAPIView):
+    queryset = Footer.objects.all()
+    serializer_class = FooterSerializer
