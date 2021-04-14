@@ -154,24 +154,25 @@ class CargoWeight(models.Model):
 #         verbose_name_plural = 'Carriers Form'
 
 
-# class ShippersForm(models.Model):
-#     fullname = models.CharField(max_length=128)
-#     company = models.CharField(max_length=128)
-#     truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
-#     truck_type = models.ForeignKey(TruckType, on_delete=True)
-#     cargo_type = models.ForeignKey(CargoType, on_delete=True)
-#     cargo_weight = models.ForeignKey(CargoWeight, on_delete=True)
-#     pickup_date = models.DateField(default=date.today)
-#     delivery_date = models.DateField(default=date.today)
-#     from_city = models.CharField(max_length=128)
-#     to_city = models.CharField(max_length=128)
-#     phone = models.CharField(max_length=16)
-#     email = models.EmailField(max_length=64)
-#     comments = models.TextField(max_length=3000)
-#
-#     class Meta:
-#         verbose_name = 'Shipper Form'
-#         verbose_name_plural = 'Shippers Form'
+class ShippersForm(models.Model):
+
+    fullname = models.CharField(max_length=128)
+    company = models.CharField(max_length=128)
+    truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
+    truck_type = models.ForeignKey(TruckType, on_delete=True)
+    cargo_type = models.ForeignKey(CargoType, on_delete=True)
+    cargo_weight = models.ForeignKey(CargoWeight, on_delete=True)
+    pickup_date = models.DateField(default=date.today)
+    delivery_date = models.DateField(default=date.today)
+    from_city = models.CharField(max_length=128)
+    to_city = models.CharField(max_length=128)
+    phone = models.CharField(max_length=16)
+    email = models.EmailField(max_length=64)
+    comments = models.TextField(max_length=3000)
+
+    class Meta:
+        verbose_name = 'Shipper Form'
+        verbose_name_plural = 'Shippers Form'
 
 
 class AboutUs(models.Model):
@@ -300,22 +301,22 @@ class ContactUs(models.Model):
         verbose_name_plural = 'Contact Us'
 
 
-# class RequestQuote(models.Model):
-#     fullname = models.CharField(max_length=32)
-#     company = models.CharField(max_length=32)
-#     truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
-#     truck_type = models.ForeignKey(TruckType, on_delete=True)
-#     pickup_date = models.DateField(default=date.today)
-#     delivery_date = models.DateField(default=date.today)
-#     from_city = models.CharField(max_length=64)
-#     to_city = models.CharField(max_length=64)
-#     phone = models.CharField(max_length=16)
-#     email = models.EmailField(max_length=32)
-#     comments = models.TextField(max_length=3000)
-#
-#     class Meta:
-#         verbose_name = 'Request Quote'
-#         verbose_name_plural = 'Request Quotes'
+class RequestQuote(models.Model):
+    fullname = models.CharField(max_length=32)
+    company = models.CharField(max_length=32)
+    truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
+    truck_type = models.ForeignKey(TruckType, on_delete=True)
+    pickup_date = models.DateField(default=date.today)
+    delivery_date = models.DateField(default=date.today)
+    from_city = models.CharField(max_length=64)
+    to_city = models.CharField(max_length=64)
+    phone = models.CharField(max_length=16)
+    email = models.EmailField(max_length=32)
+    comments = models.TextField(max_length=3000)
+
+    class Meta:
+        verbose_name = 'Request Quote'
+        verbose_name_plural = 'Request Quotes'
 
 
 class PrivacyPolicy(models.Model):
@@ -337,7 +338,6 @@ class FAQ(models.Model):
     draft = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
 
     class Meta:
         verbose_name = 'FAQ'
@@ -363,25 +363,11 @@ class Footer(models.Model):
         verbose_name_plural = 'Footer'
 
 
-class ApplicationCategory(models.Model):
-    title = models.TextField("Category", max_length=100)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Application Category"
-        verbose_name_plural = "Application Categories "
-
-
-class ApplicationForm(models.Model):
-    category = models.ForeignKey(ApplicationCategory, on_delete=True, verbose_name="Form Category")
+class CarriersForm(models.Model):
     fullname = models.CharField(max_length=128)
-    title = models.CharField(max_length=128)
+    company = models.CharField(max_length=128)
     truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
     truck_type = models.ForeignKey(TruckType, on_delete=True)
-    cargo_type = models.ForeignKey(CargoType, on_delete=True, null=True, blank=True)
-    cargo_weight = models.ForeignKey(CargoWeight, on_delete=True, null=True, blank=True)
     pickup_date = models.DateField(default=date.today)
     delivery_date = models.DateField(default=date.today)
     from_city = models.CharField(max_length=128)
@@ -391,8 +377,11 @@ class ApplicationForm(models.Model):
     comments = models.TextField(max_length=3000)
 
     def __str__(self):
-        return self.title
+        return f"{self.fullname} - {self.company}"
 
     class Meta:
-        verbose_name = "Application Form"
-        verbose_name_plural = "Applications Form"
+        verbose_name = "Carrier Form"
+        verbose_name_plural = "Carriers Form"
+
+
+

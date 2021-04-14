@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-from rest_framework import status
-from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
+from rest_framework import filters
+from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.pagination import PageNumberPagination
 from .models import *
 from .serializers import *
 
@@ -72,9 +72,16 @@ class CareersListView(ListAPIView):
     serializer_class = CareersSerializer
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
 class VacanciesListView(ListAPIView):
     queryset = Vacancies.objects.all()
     serializer_class = VacanciesSerializer
+    pagination_class = StandardResultsSetPagination
 
 
 class PrivacyPolicyListView(ListAPIView):
@@ -85,8 +92,26 @@ class PrivacyPolicyListView(ListAPIView):
 class FAQListView(ListAPIView):
     queryset = FAQ.objects.filter(draft=False).order_by('-created')
     serializer_class = FAQSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['question', 'answer']
 
 
 class FooterListView(ListAPIView):
     queryset = Footer.objects.all()
     serializer_class = FooterSerializer
+
+
+class CarriersFormCreateAPI(CreateAPIView):
+    serializer_class = CarriersFormSerializer
+
+
+class ShippersFormCreateAPI(CreateAPIView):
+    serializer_class = ShippersFormSerializer
+
+
+class ContactUsCreateAPI(CreateAPIView):
+    serializer_class = ContactUsSerializer
+
+
+class RequestQuoteCreateAPI(CreateAPIView):
+    serializer_class = RequestQuoteSerializer

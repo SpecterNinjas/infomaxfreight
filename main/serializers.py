@@ -102,3 +102,27 @@ class FooterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Footer
         fields = '__all__'
+
+
+class CarriersFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CarriersForm
+        fields = '__all__'
+
+
+class ShippersFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippersForm
+        fields = '__all__'
+
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = '__all__'
+
+
+class RequestQuoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequestQuote
+        fields = '__all__'

@@ -63,10 +63,10 @@ class CargoWeightAdmin(admin.ModelAdmin):
 #                     'to_city']
 
 
-# @admin.register(ShippersForm)
-# class ShippersFormAdmin(admin.ModelAdmin):
-#     list_display = ['fullname', 'company', 'pickup_date', 'delivery_date', 'from_city',
-#                     'to_city']
+@admin.register(ShippersForm)
+class ShippersFormAdmin(admin.ModelAdmin):
+    list_display = ['fullname', 'company', 'pickup_date', 'delivery_date', 'from_city',
+                    'to_city']
 
 
 @admin.register(AboutUs)
@@ -119,10 +119,10 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ['fullname', 'email', 'phone', 'message']
 
 
-# @admin.register(RequestQuote)
-# class RequestQuoteAdmin(admin.ModelAdmin):
-#     list_display = ['fullname', 'company', 'pickup_date', 'delivery_date', 'from_city',
-#                     'to_city']
+@admin.register(RequestQuote)
+class RequestQuoteAdmin(admin.ModelAdmin):
+    list_display = ['fullname', 'company', 'pickup_date', 'delivery_date', 'from_city',
+                    'to_city']
 
 
 admin.site.register(PrivacyPolicy)
@@ -138,9 +138,6 @@ class FooterAdmin(admin.ModelAdmin):
     list_display = ['phone', 'fax', 'mail', 'short_address']
 
 
-@admin.register(ApplicationForm)
-class ApplicationForm(admin.ModelAdmin):
-    list_display = ['fullname', 'title', 'category']
-
-
-admin.site.register(ApplicationCategory)
+@admin.register(CarriersForm)
+class CarriersFormAdmin(admin.ModelAdmin):
+    list_display = ['fullname', 'company', 'pickup_date', 'delivery_date', 'from_city', 'to_city', 'phone', 'email']

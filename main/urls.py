@@ -22,9 +22,11 @@ urlpatterns = [
 
     # Carriers
     path('carriers/', CarriersListView.as_view(), name='carriers'),
-    path('carriers-application-form/', CarriesApplicationListView.as_view(), name='carriers-application'),
+    path('carriers-application-form-link/', CarriesApplicationListView.as_view(), name='carriers-application'),
+    path('carriers-form/', CarriersFormCreateAPI.as_view(), name='carriers-form'),
 
     # Shippers
+    path('shippers/', ShippersFormCreateAPI.as_view(), name='shippers'),
 
     # About Us
     path('about-us/', AboutUsListView.as_view(), name='about'),
@@ -46,6 +48,7 @@ urlpatterns = [
     path('vacancies/', VacanciesListView.as_view(), name='vacancies'),
 
     # Contact Us
+    path('contact/', ContactUsCreateAPI.as_view(), name='contact'),
 
     # Privacy-policy
     path('privacy-policy/', PrivacyPolicyListView.as_view(), name='privacy-policy'),
@@ -55,5 +58,8 @@ urlpatterns = [
 
     # Footer
     path('footer/', FooterListView.as_view(), name='footer'),
+
+    # Quote
+    path('quote/', RequestQuoteCreateAPI.as_view(), name='quote'),
 
 ]
