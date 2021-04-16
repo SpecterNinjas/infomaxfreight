@@ -129,8 +129,8 @@ urlpatterns = [
     # Vacancies
     path("vacancy/", views.VacancyView.as_view(), name="vacancy"),
     path("vacancy_create/", views.VacancyCreateView.as_view(), name="vacancy_create"),
-    # path("vacancy/<int:pk>/", views.VacancyUpdateView.as_view(), name="vacancy_update"),
-    # path("vacancy_delete/<int:pk>/", views.VacancyDeleteView.as_view(), name="vacancy_delete"),
+    path("vacancy/<int:pk>/", views.VacancyUpdateView.as_view(), name="vacancy_update"),
+    path("vacancy_delete/<int:pk>/", views.VacancyDeleteView.as_view(), name="vacancy_delete"),
 
     # Contact Us
     path("contact/", views.ContactUsView.as_view(), name="contact"),

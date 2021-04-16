@@ -760,12 +760,12 @@ class VacancyCreateView(ListView):
     def post(self, request):
         work_type = WorkType.objects.all()
         payment_type = PaymentType.objects.all()
-        form = WorkTypeForm(request.POST, request.FILES)
+        form = VacancyForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('main_app:work_type')
+            return redirect('main_app:vacancy')
         else:
-            return render(request, 'admin_info/work_type/create.html',
+            return render(request, 'admin_info/vacancies/create.html',
                           {'form': form, 'f1': work_type, 'f2': payment_type})
 
 
@@ -921,6 +921,31 @@ class FooterUpdateView(UpdateView):
 class FooterDeleteView(DeleteView):
     model = Footer
     success_url = reverse_lazy("main_app:footer")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
+class VacancyUpdateView(UpdateView):
+    model = Vacancies
+    template_name = "admin_info/vacancies/update.html"
+    context_object_name = 'vacancies'
+    form_class = VacancyForm
+    success_url = reverse_lazy("main_app:vacancy")
+
+    def get_context_data(self, **kwargs):
+        payment_types = PaymentType.objects.all()
+        work_types = WorkType.objects.all()
+
+        context = super(VacancyUpdateView, self).get_context_data(**kwargs)
+        context['f1'] = payment_types
+        context['f2'] = work_types
+        return context
+
+
+class VacancyDeleteView(DeleteView):
+    model = Vacancies
+    success_url = reverse_lazy("main_app:vacancy")
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)

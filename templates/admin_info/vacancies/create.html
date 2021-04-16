@@ -116,7 +116,8 @@
                                                                     <textarea rows="5" cols="30"
                                                                               class="form-control invoice-address form-group"
                                                                               name="description"
-                                                                              placeholder="Add Description" required>
+                                                                              required>
+
                                                                     </textarea>
                                                         </div>
                                                     </div>
@@ -200,7 +201,7 @@
                                                     <div class="card-content">
                                                         <div class="card-body pb-0 mx-25">
                                                             <div class="row invoice-info">
-                                                                <div class="col-lg-8 col-md-8">
+                                                                <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="file" required
                                                                                class="form-control"
@@ -228,9 +229,9 @@
                                                     <div class="card-content">
                                                         <div class="card-body pb-0 mx-25">
                                                             <div class="row invoice-info">
-                                                                <div class="col-lg-4 col-md-4">
+                                                                <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
-                                                                        <input type="text" required
+                                                                        <input type="text"
                                                                                class="form-control"
                                                                                v-model="url_uz"
                                                                                name="url"
@@ -263,9 +264,9 @@
                                                                     <fieldset class="invoice-address form-group">
                                                                         <select name="payment_type"
                                                                                 class="form-control">
-                                                                            <option value="">A</option>
-                                                                            <option value="">B</option>
-                                                                            <option value="">C</option>
+                                                                            {% for payment_type in f2 %}
+                                                                                <option value="{{ payment_type.pk }}">{{ payment_type.payment_type }}</option>
+                                                                            {% endfor %}
                                                                         </select>
                                                                     </fieldset>
                                                                 </div>
@@ -324,9 +325,9 @@
                                                                 <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <select name="work_type" class="form-control">
-                                                                            <option value="">A1</option>
-                                                                            <option value="">B1</option>
-                                                                            <option value="">C1</option>
+                                                                            {% for work_type in f1 %}
+                                                                                <option value="{{ work_type.pk }}">{{ work_type.work_type }}</option>
+                                                                            {% endfor %}
                                                                         </select>
                                                                     </fieldset>
                                                                 </div>
@@ -353,7 +354,8 @@
                                                                 <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input class="form-control" type="number"
-                                                                               name="work_hour" min="0">
+                                                                               name="work_hour" min="0"
+                                                                               placeholder="Add Work Hour">
 
                                                                     </fieldset>
                                                                 </div>
@@ -383,7 +385,8 @@
                                                                 <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="email" name="email"
-                                                                               class="form-control" placeholder="">
+                                                                               class="form-control"
+                                                                               placeholder="Add Email">
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
@@ -401,7 +404,7 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h4 class="card-title" style="text-transform: inherit;">
-                                                            Work Hour</h4>
+                                                            Phone</h4>
                                                     </div>
                                                     <div class="card-content">
                                                         <div class="card-body pb-0 mx-25">
@@ -409,7 +412,8 @@
                                                                 <div class="col-lg-6 col-md-6">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input class="form-control" type="number"
-                                                                               name="work_hour" min="0">
+                                                                               placeholder="Add Phone"
+                                                                               name="phone">
 
                                                                     </fieldset>
                                                                 </div>
@@ -423,7 +427,7 @@
 
                                 </div>
                                 <div class="row">
-                                   <div class="col">
+                                    <div class="col">
                                         <div class="tab-content main-editor">
                                             <div class="tab-pane active" id="uzbek" role="tabpanel"
                                                  aria-labelledby="home-tab"
@@ -439,7 +443,8 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input class="form-control" type="text"
-                                                                               name="location">
+                                                                               name="location"
+                                                                               placeholder="Add Location">
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
@@ -454,7 +459,9 @@
 
 
                         </div>
+                        <br>
                     </section>
+                    <br>
                     <div class="invoice-action-btn mb-1">
                         <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
                             <i class="bx bxs-save"></i>

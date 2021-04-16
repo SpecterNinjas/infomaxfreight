@@ -118,7 +118,6 @@ class ShippersShowForm(forms.ModelForm):
         )
 
 
-
 class AboutUsForm(forms.ModelForm):
     class Meta:
         model = AboutUs
@@ -180,6 +179,15 @@ class WorkTypeForm(forms.ModelForm):
         model = WorkType
         fields = (
             'work_type',
+        )
+
+
+class VacancyForm(forms.ModelForm):
+    class Meta:
+        model = Vacancies
+        fields = (
+            'job_title', 'company', 'description', 'start_time', 'end_time', 'image', 'payment_type', 'quantity', 'url',
+            'work_type', 'work_hour', 'email', 'phone', 'location'
         )
 
 
