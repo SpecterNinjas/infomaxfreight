@@ -1,0 +1,151 @@
+{% extends 'admin_info/layout/layout.html' %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    {#    {% if user|has_role:"admin_temp" %}#}
+    {% include 'admin_info/inc/sidebar.html' %}
+    {#    {% endif %}#}
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <h1 class="text-center mb-2">Create New FAQ</h1>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form method="POST" enctype="multipart/form-data" autocomplete="off">
+                    {% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+
+                            <!-- invoice view page -->
+                            <div class="tab-content main-editor">
+                                <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                     aria-labelledby="home-tab"
+                                     aria-expanded="false">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title" style="text-transform: inherit;">
+                                                Question</h4>
+                                        </div>
+
+                                        <div class="card-content">
+                                            <div class="card-body pb-0">
+                                                <div class="row invoice-info">
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <input type="text" autofocus
+                                                               class="form-control invoice-address form-group"
+                                                               name="question"
+                                                               placeholder="Add Question" required>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- invoice action  -->
+                            </div>
+
+                        <div class="row tab-content main-editor">
+                            <div class="col-lg-12 col-md-12">
+                                <h4>Answer</h4>
+                                <fieldset class="invoice-address form-group">
+                                    <textarea rows="7" cols="15"
+                                              class="form-control"
+                                              v-model="answer"
+                                              name="answer"
+                                              placeholder="Add Answer">
+                                </textarea>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                            <h4> Draft</h4>
+                            <fieldset
+                                    class="invoice-address form-check pb-1 custom-control custom-radio custom-control-inline">
+                                <input type="radio"
+                                       class="form-check-input" style="width: 1.1em;height: 1.1em;"
+                                       v-model="draft"
+                                       name="draft"
+                                       value="True"
+                                       id="exampleRadios1">
+                                <label class="form-check-label mr-3" for="exampleRadios1">
+                                    Yes
+                                </label>
+                            </fieldset>
+                            <fieldset
+                                    class="invoice-address form-check pb-1 custom-control custom-radio custom-control-inline">
+                                <input type="radio"
+                                       class="form-check-input" style="width: 1.1em;height: 1.1em;" checked
+                                       v-model="draft"
+                                       name="draft"
+                                       value="False"
+                                       id="exampleRadios2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    No
+                                </label>
+                            </fieldset>
+
+                        </div>
+
+                    </section>
+
+                    <div class="invoice-action-btn mb-1">
+                        <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                            <i class="bx bxs-save"></i>
+                            <span>Saqlash</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+    <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+    <script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/quill.imageUploader.min.js' %}"></script>
+    <!-- Quill JS Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet">
+    <script src="{% static 'back/app-assets/vendors/js/vue-filepond.min.js' %}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+{% endblock %}

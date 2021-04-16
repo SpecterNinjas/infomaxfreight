@@ -19,7 +19,7 @@ class ServicesAdmin(admin.ModelAdmin):
 
 @admin.register(AnonsBar)
 class AnonsBarAdmin(admin.ModelAdmin):
-    list_display = ['image', 'is_active', 'url']
+    list_display = ['description', 'image', 'is_active', 'url']
 
 
 @admin.register(Section)
@@ -34,7 +34,7 @@ class CarriersAdmin(admin.ModelAdmin):
 
 @admin.register(CarriesApplication)
 class CarriesApplication(admin.ModelAdmin):
-    list_display = ['image', 'url']
+    list_display = ['description','image', 'url']
 
 
 @admin.register(TruckloadType)

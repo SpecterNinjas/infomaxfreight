@@ -1,0 +1,550 @@
+{% extends 'admin_info/layout/layout.html' %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue-ctk-date-time-picker.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/vue2-editor.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/katex.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/monokai-sublime.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.snow.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/quill.imageUploader.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'back/app-assets/css/main-editor.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'back/app-assets/vendors/css/ui/prism.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/css/plugins/file-uploaders/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond.min.css' %}">
+    <link rel="stylesheet" href="{% static 'back/app-assets/vendors/css/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'back/app-assets/vendors/css/forms/select/select2.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    {#    {% if user|has_role:"admin_temp" %}#}
+    {% include 'admin_info/inc/sidebar.html' %}
+    {#    {% endif %}#}
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <h1 class="text-center mb-2">Update Shipper</h1>
+            <div class="content-body">
+                <!-- app invoice View Page -->
+                <form method="POST" enctype="multipart/form-data" autocomplete="off">
+                    {% csrf_token %}
+                    <section class="invoice-edit-wrapper">
+                        <div class="row">
+                            <!-- invoice view page -->
+                            <div class="col-xl-12 col-md-12 col-12">
+                                {#                                <ul class="nav nav-pills">#}
+                                {#                                    <li class="nav-item">#}
+                                {#                                        <a class="nav-link active" id="uzbek-tab" data-toggle="pill" href="#uzbek"#}
+                                {#                                           aria-expanded="true"><i class="flag-icon flag-icon-uz mr-50"></i>#}
+                                {#                                            O‘zbekcha</a>#}
+                                {#                                    </li>#}
+                                {#                                    <li class="nav-item">#}
+                                {#                                        <a class="nav-link" id="russian-tab" data-toggle="pill" href="#russian"#}
+                                {#                                           aria-expanded="false"><i class="flag-icon flag-icon-ru mr-50"></i> Русский#}
+                                {#                                        </a>#}
+                                {#                                    </li>#}
+                                {#                                    <li class="nav-item">#}
+                                {#                                        <a class="nav-link" id="english-tab" data-toggle="pill" href="#english"#}
+                                {#                                           aria-expanded="false"><i class="flag-icon flag-icon-gb mr-50"></i> English#}
+                                {#                                        </a>#}
+                                {#                                    </li>#}
+                                {#                                </ul>#}
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Fullname</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required autofocus
+                                                                               class="form-control"
+                                                                               v-model="fullname_uz"
+                                                                               name="fullname"
+                                                                               value="{{ shipper_form.fullname }}"
+                                                                               placeholder="Add Fullname">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Company</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required
+                                                                               class="form-control"
+                                                                               v-model="company_uz"
+                                                                               name="company"
+                                                                               value="{{ shipper_form.company }}"
+                                                                               placeholder="Add Company Name">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {#                                    <div class="tab-pane" id="russian" role="tabpanel" aria-labelledby="russian-tab"#}
+                                            {#                                         aria-expanded="false">#}
+                                            {#                                        <div class="card">#}
+                                            {#                                            <div class="card-header">#}
+                                            {#                                                <h4 class="card-title" style="text-transform: inherit;">[RU] Верхняя основная навигация</h4>#}
+                                            {#                                            </div>#}
+                                            {#                                            <div class="card-content">#}
+                                            {#                                                <div class="card-body pb-0 mx-25">#}
+                                            {#                                                    <div class="row invoice-info">#}
+                                            {#                                                        <div class="col-lg-12 col-md-12">#}
+                                            {#                                                            <fieldset class="invoice-address form-group">#}
+                                            {#                                                                <input type="text"#}
+                                            {#                                                                       class="form-control"#}
+                                            {#                                                                       v-model="title_ru"#}
+                                            {#                                                                       name="title_ru"#}
+                                            {#                                                                       placeholder="{% trans 'Add Title' %}">#}
+                                            {#                                                            </fieldset>#}
+                                            {#                                                        </div>#}
+                                            {#                                                    </div>#}
+                                            {#                                                </div>#}
+                                            {#                                            </div>#}
+                                            {##}
+                                            {#                                        </div>#}
+                                            {#                                    </div>#}
+                                            {#                                    <div class="tab-pane" id="english" role="tabpanel" aria-labelledby="english-tab"#}
+                                            {#                                         aria-expanded="false">#}
+                                            {#                                        <div class="card">#}
+                                            {#                                            <div class="card-header">#}
+                                            {#                                                <h4 class="card-title" style="text-transform: inherit;">[EN] Header navigation</h4>#}
+                                            {#                                            </div>#}
+                                            {##}
+                                            {#                                            <div class="card-content">#}
+                                            {#                                                <div class="card-body pb-0 mx-25">#}
+                                            {#                                                    <div class="row invoice-info">#}
+                                            {#                                                        <div class="col-lg-12 col-md-12">#}
+                                            {#                                                            <fieldset class="invoice-address form-group">#}
+                                            {#                                                                <input type="text"#}
+                                            {#                                                                       class="form-control"#}
+                                            {#                                                                       v-model="title_en"#}
+                                            {#                                                                       name="title_en"#}
+                                            {#                                                                       placeholder="Add Title">#}
+                                            {#                                                            </fieldset>#}
+                                            {#                                                        </div>#}
+                                            {#                                                    </div>#}
+                                            {#                                                </div>#}
+                                            {#                                            </div>#}
+                                            {##}
+                                            {#                                        </div>#}
+                                            {#                                    </div>#}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">From
+                                                            City</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required
+                                                                               class="form-control"
+                                                                               v-model="from_city_uz"
+                                                                               name="from_city"
+                                                                               value="{{ shipper_form.from_city }}"
+                                                                               placeholder="Add City">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">To
+                                                            City</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required
+                                                                               class="form-control"
+                                                                               v-model="to_city_uz"
+                                                                               name="to_city"
+                                                                               value="{{ shipper_form.to_city }}"
+                                                                               placeholder="Add City">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Truckload Type </h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <select class="form-control" name="truckload_type" style="margin-bottom: 25px;">
+{#
+
+                                                                        {% for item in truckload_types %}
+                                                                            <option {% if item.id == shipper_form.truckload_type.id  %}selected{% endif %} value="{{ item.id }}">{{ item.title }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Truck Type</h4>
+                                                    </div>
+                                                  <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <select class="form-control" name="truck_type" style="margin-bottom: 25px;">
+{#                                                                     <option value="{{ shipper_form.truck_type.id }}" selected="selected" style="display: none">{{ shipper_form.truck_type }}</option>#}
+{#                                                                       #}
+                                                                        {% for item in f2 %}
+                                                                            <option {% if item.id == shipper_form.truck_type.id  %}selected{% endif %}  value="{{ item.id }}">{{ item.title }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+      <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Cargo Type </h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <select class="form-control" name="cargo_type" style="margin-bottom: 25px;">
+
+{#                                                                     <option  value="{{ shipper_form.cargo_type.id }}" selected="selected"  style="display: none">{{ shipper_form.cargo_type }}</option>#}
+{#                                                                       #}
+                                                                        {% for item in f3 %}
+                                                                            <option {% if item.id == shipper_form.cargo_type.id  %}selected{% endif %} value="{{ item.id }}">{{ item.title }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Cargo Weight</h4>
+                                                    </div>
+                                                  <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <select class="form-control" name="cargo_weight" style="margin-bottom: 25px;">
+{#                                                                        <option value="{{ shipper_form.cargo_weight }}" selected="selected"  style="display: none">{{ shipper_form.cargo_weight }}</option>#}
+
+                                                                        {% for item in f4 %}
+                                                                            <option {% if item.id == shipper_form.cargo_weight.id  %}selected{% endif %} value="{{ item.id }}">{{ item.title }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">Pick Up
+                                                            Date</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="date" required
+                                                                               class="form-control"
+                                                                               name="pickup_date"
+                                                                               value="{{ shipper_form.pickup_date | date:"Y-m-d" }}"
+                                                                               placeholder="Add Pick Up Date">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">Delivery
+                                                            Date</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="date" required
+                                                                               class="form-control"
+                                                                               v-model="delivery_date_uz"
+                                                                               name="delivery_date"
+                                                                               value="{{ shipper_form.delivery_date | date:"Y-m-d" }}"
+                                                                               placeholder="Add Delivery Date">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Phone</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required
+                                                                               class="form-control"
+                                                                               v-model="phone_uz"
+                                                                               name="phone"
+                                                                               value="{{ shipper_form.phone }}"
+                                                                               placeholder="Add Phone Number">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">Email
+                                                            Address</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="email" required
+                                                                               class="form-control"
+                                                                               v-model="email_uz"
+                                                                               name="email"
+                                                                               value="{{ shipper_form.email }}"
+                                                                               placeholder="Add Email">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content main-editor">
+                                    <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                         aria-labelledby="home-tab"
+                                         aria-expanded="false">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title" style="text-transform: inherit;">
+                                                    Comment</h4>
+                                            </div>
+
+                                            <div class="card-content">
+                                                <div class="card-body pb-0">
+                                                    <div class="row invoice-info">
+                                                        <div class="col-lg-12 col-md-12">
+                                                                    <textarea rows="7" cols="30"
+                                                                              class="form-control invoice-address form-group"
+                                                                              name="comments"
+                                                                              placeholder="Add Comment" required>
+                                                                        {{ shipper_form.comments }}
+                                                                    </textarea>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- invoice action  -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </section>
+                    <div class="invoice-action-btn mb-1">
+                        <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+                            <i class="bx bxs-save"></i>
+                            <span>Saqlash</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'back/app-assets/vendors/js/filepond-plugin-image-preview.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/filepond.js' %}"></script>
+    <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+    <script src="{% static 'back/app-assets/js/vue.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/vue-ctk-date-time-picker.umd.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/katex.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/highlight.min.js' %}"></script>
+    <script src="{% static 'back/app-assets/vendors/js/quill.imageUploader.min.js' %}"></script>
+    <!-- Quill JS Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.4/quill.core.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.bubble.css" rel="stylesheet">
+    <script src="{% static 'back/app-assets/vendors/js/vue-filepond.min.js' %}"></script>
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/vendors/js/forms/select/select2.full.min.js' %}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{% static 'back/app-assets/js/scripts/forms/select/form-select2.min.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,534 @@
+{% load static %}
+{#{% load permission_tags %}#}
+
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item mr-auto">
+                <a class="navbar-brand" href="{% url 'main_app:main_page' %}">
+                    {#                <a class="navbar-brand" href="{% url 'index-admin_temp' %}">#}
+                    <div class="brand-logo">
+                        <img class="logo" src="{% static 'back/app-assets/images/logo/wavecms-w.svg' %}"/>
+                    </div>
+                </a></li>
+        </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
+            data-icon-style="lines">
+
+            <li class=" navigation-header"><span>MENU</span></li>
+
+            {#  Navigation Part #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Navigation</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:navigation' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Navbar</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:navigation_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Slider #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Slider</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:slider' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Slider Items</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:slider_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Services #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Service</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:service' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Services</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:service_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Anons Bar #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Anons Bar</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:anons_bar' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Anons Bar Items</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:anonsbar_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Section #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Section</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:section' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Sections</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:section_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Carriers #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Carriers</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:carriers' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Carriers</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:carriers_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  CarriesApplication #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Carrier Application</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:carriers_app' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Carrier Applications</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:carriers_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  TruckloadType #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Truckload Type</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:truckload_type' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Truckload Types</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:truckload_type_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Truck Type #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Truck Type</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:truck_type' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Truck Types</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'main_app:truck_type_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Cargo Type #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Cargo Type</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:cargo_type' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Cargo Types</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:cargo_type_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {#  Cargo Weight #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Cargo Weight</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:cargo_weight' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Cargo Weights</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:cargo_weight_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Shipper Form #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Shipper Form</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:shipper_form' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Shipper Forms</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:shipper_form_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# About Us #}
+            <li class=" nav-item news">
+                <a href=""><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">About Us</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:about_us' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View About Us</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:about_us_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Statistics #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Statistics</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:statistics' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Statistics</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:statistics_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# About Us Section #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">About Us Section</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:about_section' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View About Section</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:about_section_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Team #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Team</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:team' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Team Members</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:team_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Insights #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Insights</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:insight' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Insights</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:insight_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Careers #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Careers</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:career' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Careers</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:career_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Payment Type #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Payment Type</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:payment_type' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Payment Types</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:payment_type_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Work Type #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Work Type</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:work_type' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Work Types</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:work_type_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Vacancies #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Vacancies</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:vacancy' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Vacancies</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Contact Us #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Contact Us</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:contact' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Contact Us</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Request Quote #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Request Quote</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Request Quotes</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Privacy Policy #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Privacy Policy</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:privacy' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Privacy Policy</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:privacy_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            {# FAQ #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">FAQ</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:faq' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View All FAQ</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:faq_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Footer #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Footer</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:footer' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Footer</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Carriers Form #}
+            <li class="nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Carriers Form</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Carriers Form</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<!-- END: Main Menu-->

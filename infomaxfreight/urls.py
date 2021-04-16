@@ -23,10 +23,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api/v1/', include('main.urls')),
-]
+    path('main_admin/', include('main_admin.urls'))
 
+]
 
 urlpatterns += doc_urls
 
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

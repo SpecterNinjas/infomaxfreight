@@ -5,7 +5,7 @@ from datetime import date
 class Navbar(models.Model):
     title = models.CharField(max_length=32)
     order = models.IntegerField()
-    url = models.EmailField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Navbar'
@@ -15,7 +15,7 @@ class Navbar(models.Model):
 class Slider(models.Model):
     title = models.CharField("Title", max_length=512)
     description = models.TextField("Description", max_length=1024)
-    image = models.ImageField("Image", upload_to='main/slider/')
+    image = models.FileField("Image", upload_to='main/slider/')
     draft = models.BooleanField("Draft", default=True)
     url = models.SlugField("Url", blank=True, null=True)
 
@@ -31,7 +31,7 @@ class Services(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField(max_length=3000)
     icon = models.FileField(upload_to='main/services/')
-    url = models.SlugField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -43,9 +43,9 @@ class Services(models.Model):
 
 class AnonsBar(models.Model):
     description = models.TextField(max_length=2048)
-    image = models.ImageField(upload_to='main/anons_bar/')
+    image = models.FileField(upload_to='main/anons_bar/')
     is_active = models.BooleanField(default=True)
-    url = models.SlugField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Anons Bar'
@@ -55,7 +55,7 @@ class AnonsBar(models.Model):
 class Section(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField(max_length=1024)
-    image = models.ImageField(upload_to='main/section/')
+    image = models.FileField(upload_to='main/section/')
     icon = models.FileField(upload_to='main/section/', null=True, blank=True)
 
     def __str__(self):
@@ -69,7 +69,7 @@ class Section(models.Model):
 class Carriers(models.Model):
     title = models.CharField(max_length=300)
     description = models.TextField(max_length=3000)
-    image = models.ImageField(upload_to='main/carriers/')
+    image = models.FileField(upload_to='main/carriers/')
 
     def __str__(self):
         return self.title
@@ -81,8 +81,8 @@ class Carriers(models.Model):
 
 class CarriesApplication(models.Model):
     description = models.TextField(max_length=3000)
-    image = models.ImageField(upload_to='main/subcarriers/')
-    url = models.SlugField(blank=True, null=True)
+    image = models.FileField(upload_to='main/subcarriers/')
+    url = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'SubCarrier'
@@ -136,26 +136,7 @@ class CargoWeight(models.Model):
         verbose_name_plural = 'Cargo Weight'
 
 
-# class CarriersForm(models.Model):
-#     fullname = models.CharField(max_length=32)
-#     company = models.CharField(max_length=32)
-#     truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
-#     truck_type = models.ForeignKey(TruckType, on_delete=True)
-#     pickup_date = models.DateField(default=date.today)
-#     delivery_date = models.DateField(default=date.today)
-#     from_city = models.CharField(max_length=32)
-#     to_city = models.CharField(max_length=32)
-#     phone = models.CharField(max_length=16)
-#     email = models.EmailField(max_length=32)
-#     comments = models.TextField(max_length=3000)
-#
-#     class Meta:
-#         verbose_name = 'Carrier Form'
-#         verbose_name_plural = 'Carriers Form'
-
-
 class ShippersForm(models.Model):
-
     fullname = models.CharField(max_length=128)
     company = models.CharField(max_length=128)
     truckload_type = models.ForeignKey(TruckloadType, on_delete=True)
@@ -179,7 +160,7 @@ class AboutUs(models.Model):
     title = models.CharField(max_length=32)
     content = models.TextField(max_length=4000)
     subcontent = models.TextField(max_length=2048)
-    image = models.ImageField(upload_to='main/about_us/')
+    image = models.FileField(upload_to='main/about_us/')
 
     class Meta:
         verbose_name = 'About Us'
@@ -200,7 +181,7 @@ class AboutUsSection(models.Model):
     title = models.CharField(max_length=32)
     content = models.TextField(max_length=4000)
     subcontent = models.TextField(max_length=2048)
-    image = models.ImageField(upload_to='main/about_us/')
+    image = models.FileField(upload_to='main/about_us/')
 
     class Meta:
         verbose_name = 'About Us Section'
@@ -211,13 +192,13 @@ class Team(models.Model):
     name = models.CharField(max_length=16)
     surname = models.CharField(max_length=16)
     job_title = models.CharField(max_length=32)
-    image = models.ImageField(upload_to='main/team/', default='main/team/avatar-default.png')
+    image = models.FileField(upload_to='main/team/', default='main/team/avatar-default.png')
 
     # Social media
-    twitter = models.URLField(max_length=32)
-    facebook = models.URLField(max_length=32)
-    telegram = models.URLField(max_length=32)
-    instagram = models.URLField(max_length=32)
+    twitter = models.URLField(max_length=32, null=True, blank=True)
+    facebook = models.URLField(max_length=32, null=True, blank=True)
+    telegram = models.URLField(max_length=32, null=True, blank=True)
+    instagram = models.URLField(max_length=32, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Team'
@@ -228,7 +209,7 @@ class Insights(models.Model):
     title = models.CharField(max_length=32)
     content = models.TextField(max_length=4000)
     subcontent = models.TextField(max_length=2048)
-    image = models.ImageField(upload_to='main/insights/')
+    image = models.FileField(upload_to='main/insights/')
 
     class Meta:
         verbose_name = 'Insights'
@@ -345,18 +326,18 @@ class FAQ(models.Model):
 
 
 class Footer(models.Model):
-    phone = models.CharField(max_length=16)
-    fax = models.CharField(max_length=16)
+    phone = models.CharField(max_length=18)
+    fax = models.CharField(max_length=18)
     mail = models.EmailField(max_length=32)
     short_address = models.CharField(max_length=64)
     full_address = models.CharField(max_length=256)
     copyright = models.CharField(max_length=256)
 
     # Social media
-    twitter = models.URLField(max_length=32)
-    facebook = models.URLField(max_length=32)
-    telegram = models.URLField(max_length=32)
-    instagram = models.URLField(max_length=32)
+    twitter = models.URLField(max_length=32, null=True, blank=True)
+    facebook = models.URLField(max_length=32, null=True, blank=True)
+    telegram = models.URLField(max_length=32, null=True, blank=True)
+    instagram = models.URLField(max_length=32, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Footer'
@@ -382,6 +363,3 @@ class CarriersForm(models.Model):
     class Meta:
         verbose_name = "Carrier Form"
         verbose_name_plural = "Carriers Form"
-
-
-
