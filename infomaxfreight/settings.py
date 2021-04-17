@@ -32,9 +32,19 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '*',
 ]
-CORS_ALLOWED_ORIGINS = [
-    "*",
+
+CORS_ALLOW_METHODS = [
+    '*'
 ]
+
+CORS_ALLOW_HEADERS = [
+    '*'
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 # Application definition
 
 INSTALLED_APPS = [
