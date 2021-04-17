@@ -31,7 +31,7 @@ class Services(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField(max_length=3000)
     icon = models.FileField(upload_to='main/services/')
-    url = models.URLField(blank=True, null=True)
+    url = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.title

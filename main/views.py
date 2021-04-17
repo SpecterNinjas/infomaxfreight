@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework import filters
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 from .models import *
 from .serializers import *
@@ -109,9 +109,15 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class VacanciesListView(ListAPIView):
-    queryset = Vacancies.objects.all()
+    queryset = Vacancies.objects.all().order_by('id')
     serializer_class = VacanciesSerializer
     pagination_class = StandardResultsSetPagination
+
+
+class VacanciesDetailView(RetrieveAPIView):
+    lookup_field = 'id'
+    queryset = Vacancies.objects.all()
+    serializer_class = VacancyDetailSerializer
 
 
 class PrivacyPolicyListView(ListAPIView):

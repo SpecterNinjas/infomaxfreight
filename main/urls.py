@@ -65,6 +65,7 @@ urlpatterns = [
 
     # Vacancies
     path('vacancies/', VacanciesListView.as_view(), name='vacancies'),
+    path('vacancies/<int:id>', VacanciesDetailView.as_view(), name='vacancy-detail'),
 
     # Contact Us
     path('contact/', ContactUsCreateAPI.as_view(), name='contact'),
