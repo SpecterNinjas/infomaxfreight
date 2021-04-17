@@ -37,13 +37,13 @@ urlpatterns = [
     path("anonsbar_delete/<int:pk>/", views.AnonsBarDeleteView.as_view(), name="anonsbar_delete"),
 
     # Section
-    path("section/", views.SectionView.as_view(), name="section"),
+    path("section_desc/", views.SectionView.as_view(), name="section"),
     path("section_create/", views.SectionCreateView.as_view(), name="section_create"),
     path("section/<int:pk>/", views.SectionUpdateView.as_view(), name="section_update"),
     path("section_delete/<int:pk>/", views.SectionDeleteView.as_view(), name="section_delete"),
 
     # Carriers
-    path("carriers/", views.CarrierView.as_view(), name="carriers"),
+    path("carriers_desc/", views.CarrierView.as_view(), name="carriers"),
     path("carriers_create/", views.CarrierCreateView.as_view(), name="carriers_create"),
     path("carriers/<int:pk>/", views.CarrierUpdateView.as_view(), name="carriers_update"),
     path("carriers_delete/<int:pk>/", views.CarrierDeleteView.as_view(), name="carriers_delete"),

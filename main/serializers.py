@@ -121,6 +121,12 @@ class VacanciesSerializer(serializers.ModelSerializer):
         model = Vacancies
         fields = '__all__'
 
+#
+# class VacanciesShortSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Vacancies
+#         fields = ['job_title', 'image', 'start_time', 'end_time', 'quantity', 'url']
+
 
 class PrivacyPolicySerializer(serializers.ModelSerializer):
     class Meta:
