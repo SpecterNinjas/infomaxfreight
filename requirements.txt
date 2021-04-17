@@ -8,3 +8,5 @@ django-filter==2.4.0
 virtualenv==20.4.3
 virtualenvwrapper-win==1.2.6
 drf-yasg==1.17.1
+django-cors-headers==3.2.1
+

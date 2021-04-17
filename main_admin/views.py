@@ -1,14 +1,35 @@
-from django.http import JsonResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView
-from rest_framework.reverse import reverse
-
 from main.models import *
 from .forms import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class MainView(ListView):
+def admin_login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect('main_app:main_page')
+            else:
+                return HttpResponse("Your account was inactive.")
+        else:
+            print("Someone tried to login and failed.")
+            print("They used username: {} and password: {}".format(username, password))
+            return HttpResponse("Invalid login details given")
+    elif request.method == 'GET':
+        print(request.GET)
+        return render(request, 'admin_info/AdminLogin/index.html')
+
+
+class MainView(LoginRequiredMixin, ListView):
     queryset = Navbar.objects.all()
     template_name = 'admin_info/main/index.html'
 

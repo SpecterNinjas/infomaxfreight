@@ -5,7 +5,7 @@ from datetime import date
 class Navbar(models.Model):
     title = models.CharField(max_length=32)
     order = models.IntegerField()
-    url = models.URLField(blank=True, null=True)
+    url = models.SlugField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Navbar'

@@ -1,6 +1,7 @@
 from django import forms
 from main.models import *
-from django.forms.models import inlineformset_factory
+
+from django.contrib.auth.models import User
 
 
 #
@@ -240,6 +241,7 @@ class CarrierShowForm(forms.ModelForm):
             'fullname', 'company', 'truckload_type', 'truck_type', 'pickup_date', 'delivery_date', 'from_city',
             'to_city', 'phone', 'email', 'comments'
         )
+
 
 #
 #

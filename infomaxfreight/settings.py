@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # INSTALLED
     'rest_framework',
     'drf_yasg',  # Swagger Installion
+    'corsheaders',  # To avoid Cors Error
 ]
 
 # REST_FRAMEWORK = {
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,6 +132,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+LOGIN_URL = 'main_app:main-admin-login'
+# LOGIN_REDIRECT_URL = 'main_app:main-admin-login'
+
+LOGOUT_REDIRECT_URL = 'main_app:main-admin-login'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
