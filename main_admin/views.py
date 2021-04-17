@@ -949,3 +949,133 @@ class VacancyDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+class RequestQuoteView(ListView):
+    template_name = 'admin_info/quote/index.html'
+    context_object_name = 'quotes'
+    queryset = RequestQuote.objects.all()
+
+
+class RequestQuoteCreateView(ListView):
+
+    def get(self, request, *args, **kwargs):
+        truckload_types = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        return render(request, 'admin_info/quote/create.html', {'f1': truckload_types, 'f2': truck_types})
+
+    def post(self, request):
+        form = QuoteForm(request.POST, request.FILES)
+        truckload_types = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        if form.is_valid():
+            form.save()
+            return redirect('main_app:quote')
+        else:
+            return render(request, 'admin_info/quote/create.html',
+                          {'form': form, 'f1': truckload_types, 'f2': truck_types})
+
+
+class RequestQuoteUpdateView(UpdateView):
+    model = RequestQuote
+    template_name = "admin_info/quote/update.html"
+    context_object_name = 'quote'
+    form_class = QuoteForm
+    success_url = reverse_lazy("main_app:quote")
+
+    def get_context_data(self, **kwargs):
+        truckLoadTypes = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        context = super(RequestQuoteUpdateView, self).get_context_data(**kwargs)
+        context['truckload_types'] = truckLoadTypes
+        context['f2'] = truck_types
+        return context
+
+    # def form_invalid(self, form):
+    #     print(form)
+    #     response = super().form_invalid(form)
+    #     if self.request.accepts('text/html'):
+    #         return response
+    #     else:
+    #         return JsonResponse(form.errors, status=400)
+    #
+    #
+    # def form_valid(self, form):
+    #     print(form.instance.truck_type , 'rad0')
+    #     return super(ShipperFormUpdateView, self).form_valid(form)
+
+
+class RequestQuoteDeleteView(DeleteView):
+    model = RequestQuote
+    success_url = reverse_lazy("main_app:quote")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
+class CarriersFormView(ListView):
+    template_name = 'admin_info/carriers_form/index.html'
+    context_object_name = 'carriers_form'
+    queryset = CarriersForm.objects.all()
+
+
+class CarriersFormCreateView(ListView):
+
+    def get(self, request, *args, **kwargs):
+        truckload_types = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        return render(request, 'admin_info/carriers_form/create.html', {'f1': truckload_types, 'f2': truck_types})
+
+    def post(self, request):
+        form = CarrierShowForm(request.POST, request.FILES)
+        truckload_types = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        if form.is_valid():
+            form.save()
+            return redirect('main_app:carriers_form')
+        else:
+            return render(request, 'admin_info/carriers_form/create.html',
+                          {'form': form, 'f1': truckload_types, 'f2': truck_types})
+
+
+class CarriersFormUpdateView(UpdateView):
+    model = CarriersForm
+    template_name = "admin_info/carriers_form/update.html"
+    context_object_name = 'carriers_form'
+    form_class = CarrierShowForm
+    success_url = reverse_lazy("main_app:carriers_form")
+
+    def get_context_data(self, **kwargs):
+        truckLoadTypes = TruckloadType.objects.all()
+        truck_types = TruckType.objects.all()
+
+        context = super(CarriersFormUpdateView, self).get_context_data(**kwargs)
+        context['truckload_types'] = truckLoadTypes
+        context['f2'] = truck_types
+        return context
+
+    # def form_invalid(self, form):
+    #     print(form)
+    #     response = super().form_invalid(form)
+    #     if self.request.accepts('text/html'):
+    #         return response
+    #     else:
+    #         return JsonResponse(form.errors, status=400)
+    #
+    #
+    # def form_valid(self, form):
+    #     print(form.instance.truck_type , 'rad0')
+    #     return super(ShipperFormUpdateView, self).form_valid(form)
+
+
+class CarriersFormDeleteView(DeleteView):
+    model = CarriersForm
+    success_url = reverse_lazy("main_app:carriers_form")
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

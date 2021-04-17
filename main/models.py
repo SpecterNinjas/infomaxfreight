@@ -253,7 +253,7 @@ class Vacancies(models.Model):
     description = models.TextField(max_length=3000)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    image = models.ImageField(upload_to='main/vacancies/', default='main/vacancies/default.png')
+    image = models.FileField(upload_to='main/vacancies/', default='main/vacancies/default.png')
     payment_type = models.ForeignKey(PaymentType, on_delete=True)
     quantity = models.FloatField(default=0.0)
     url = models.SlugField(null=True, blank=True)

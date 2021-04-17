@@ -154,4 +154,16 @@ urlpatterns = [
     path("footer/<int:pk>/", views.FooterUpdateView.as_view(), name="footer_update"),
     path("footer_delete/<int:pk>/", views.FooterDeleteView.as_view(), name="footer_delete"),
 
+    # Quote
+    path("quote/", views.RequestQuoteView.as_view(), name="quote"),
+    path("quote_create/", views.RequestQuoteCreateView.as_view(), name="quote_create"),
+    path("quote/<int:pk>/", views.RequestQuoteUpdateView.as_view(), name="quote_update"),
+    path("quote_delete/<int:pk>/", views.RequestQuoteDeleteView.as_view(), name="quote_delete"),
+
+    # Carriers Form
+    path("carriers_form/", views.CarriersFormView.as_view(), name="carriers_form"),
+    path("carriers_form_create/", views.CarriersFormCreateView.as_view(), name="carriers_form_create"),
+    path("carriers_form/<int:pk>/", views.CarriersFormUpdateView.as_view(), name="carriers_form_update"),
+    path("carriers_form_delete/<int:pk>/", views.CarriersFormDeleteView.as_view(), name="carriers_form_delete"),
+
 ]

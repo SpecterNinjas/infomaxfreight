@@ -223,6 +223,24 @@ class FooterForm(forms.ModelForm):
             'instagram'
         )
 
+
+class QuoteForm(forms.ModelForm):
+    class Meta:
+        model = RequestQuote
+        fields = (
+            'fullname', 'company', 'truckload_type', 'truck_type', 'pickup_date', 'delivery_date', 'from_city',
+            'to_city', 'phone', 'email', 'comments'
+        )
+
+
+class CarrierShowForm(forms.ModelForm):
+    class Meta:
+        model = CarriersForm
+        fields = (
+            'fullname', 'company', 'truckload_type', 'truck_type', 'pickup_date', 'delivery_date', 'from_city',
+            'to_city', 'phone', 'email', 'comments'
+        )
+
 #
 #
 # class NominationForm(forms.ModelForm):
