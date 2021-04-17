@@ -21,13 +21,10 @@ def admin_login_view(request):
             else:
                 return HttpResponse("Your account was inactive.")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username, password))
             return HttpResponse("Invalid login details given")
     elif request.method == 'GET':
-        print(request.GET)
-        return render(request, 'admin_info/AdminLogin/index.html')
 
+        return render(request, 'admin_info/AdminLogin/index.html')
 
 
 class MainView(LoginRequiredMixin, ListView):
