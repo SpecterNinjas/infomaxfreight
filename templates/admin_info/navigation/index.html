@@ -47,7 +47,7 @@
                                     </li>
                                     <li class="add-new-button"><a class="btn btn-primary"
                                                                   href="{% url 'main_app:navigation_create' %}"><i
-                                            class="bx bxs-plus-square mr-1"></i>Yangi qo‘shish</a></li>
+                                            class="bx bxs-plus-square mr-1"></i>Create</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -64,9 +64,9 @@
                                 <thead>
                                 <tr>
                                     <th class="pr-2">№</th>
-                                    <th class="pl-0">nomi</th>
-                                    <th class="text-center">tartibi</th>
-                                    <th class="text-right">amallar</th>
+                                    <th class="pl-0">Title</th>
+                                    <th class="text-center">Order</th>
+                                    <th class="text-right">Settings</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,12 +85,12 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item"
                                                        href="{% url 'main_app:navigation_update' navigation.pk %}"><i
-                                                            class="bx bx-edit-alt mr-1"></i>tahrirlash</a>
+                                                            class="bx bx-edit-alt mr-1"></i>Edit</a>
 
                                                     <a class="dropdown-item" data-id="{{ navigation.id }}"
                                                        href="{% url 'main_app:navigation_delete' navigation.pk %}"><i
                                                             class="bx bx-trash mr-1"></i>
-                                                        o‘chirish</a>
+                                                        Delete</a>
                                                 </div>
                                             </div>
                                         </td>

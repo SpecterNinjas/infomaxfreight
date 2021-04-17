@@ -2,6 +2,42 @@ from rest_framework import serializers
 from .models import *
 
 
+class TruckTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TruckType
+        fields = ['title', 'is_available']
+
+
+class TruckLoadTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TruckloadType
+        fields = ['title', 'is_available']
+
+
+class CargoTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CargoType
+        fields = ['title', 'is_available']
+
+
+class CargoWeightSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CargoWeight
+        fields = ['title', ]
+
+
+class PaymentTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaymentType
+        fields = ['payment_type', ]
+
+
+class WorkTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WorkType
+        fields = ['work_type', ]
+
+
 class NavbarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Navbar

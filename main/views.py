@@ -7,6 +7,36 @@ from .models import *
 from .serializers import *
 
 
+class TruckTypeListView(ListAPIView):
+    queryset = TruckType.objects.filter(is_available=True)
+    serializer_class = TruckTypeSerializer
+
+
+class TruckloadTypeListView(ListAPIView):
+    queryset = TruckloadType.objects.filter(is_available=True)
+    serializer_class = TruckLoadTypeSerializer
+
+
+class CargoTypeListView(ListAPIView):
+    queryset = CargoType.objects.filter(is_available=True)
+    serializer_class = CargoTypeSerializer
+
+
+class CargoWeightListView(ListAPIView):
+    queryset = CargoWeight.objects.all()
+    serializer_class = CargoWeightSerializer
+
+
+class PaymentTypeListView(ListAPIView):
+    queryset = PaymentType.objects.all()
+    serializer_class = PaymentTypeSerializer
+
+
+class WorkTypeListView(ListAPIView):
+    queryset = WorkType.objects.all()
+    serializer_class = WorkTypeSerializer
+
+
 class NavbarListView(ListAPIView):
     queryset = Navbar.objects.all()
     serializer_class = NavbarSerializer

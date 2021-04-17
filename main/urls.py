@@ -5,6 +5,25 @@ app_name = 'main'
 
 urlpatterns = [
 
+    # Truck Type
+    path('truck_type/', TruckTypeListView.as_view(), name='truck_type'),
+
+    # TruckLoad Type
+    path('truckload_type/', TruckloadTypeListView.as_view(), name='truckload_type'),
+
+    # Cargo Type
+    path('cargo_type/', CargoTypeListView.as_view(), name='cargo_type'),
+
+    # Cargo Weight
+    path('cargo_weight/', CargoWeightListView.as_view(), name='cargo_weight'),
+
+    # payment Type
+    path('payment_type/', PaymentTypeListView.as_view(), name='payment_type'),
+
+    # work Type
+    path('work_type/', WorkTypeListView.as_view(), name='work_type'),
+
+
     # NAVBAR
     path('navbar/', NavbarListView.as_view(), name='navbar'),
 

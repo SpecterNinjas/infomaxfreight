@@ -47,7 +47,7 @@
                                     </li>
                                     <li class="add-new-button"><a class="btn btn-primary"
                                                                   href="{% url 'main_app:vacancy_create' %}"><i
-                                            class="bx bxs-plus-square mr-1"></i>Yangi qo‘shish</a></li>
+                                            class="bx bxs-plus-square mr-1"></i>Create</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -97,12 +97,12 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item"
                                                        href="{% url 'main_app:vacancy_update' vacancy.id %}"><i
-                                                            class="bx bx-edit-alt mr-1"></i>tahrirlash</a>
+                                                            class="bx bx-edit-alt mr-1"></i>Edit</a>
 
                                                     <a class="dropdown-item" data-id="{{ vacancy.id }}"
                                                        href="{% url 'main_app:vacancy_delete' vacancy.id %}"><i
                                                             class="bx bx-trash mr-1"></i>
-                                                        o‘chirish</a>
+                                                        Delete</a>
                                                 </div>
                                             </div>
                                         </td>

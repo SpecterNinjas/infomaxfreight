@@ -45,7 +45,7 @@ class AnonsBar(models.Model):
     description = models.TextField(max_length=2048)
     image = models.FileField(upload_to='main/anons_bar/')
     is_active = models.BooleanField(default=True)
-    url = models.URLField(blank=True, null=True)
+    url = models.SlugField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'Anons Bar'
@@ -82,7 +82,7 @@ class Carriers(models.Model):
 class CarriesApplication(models.Model):
     description = models.TextField(max_length=3000)
     image = models.FileField(upload_to='main/subcarriers/')
-    url = models.URLField(blank=True, null=True)
+    url = models.SlugField(blank=True, null=True)
 
     class Meta:
         verbose_name = 'SubCarrier'
