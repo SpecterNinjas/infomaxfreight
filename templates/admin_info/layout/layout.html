@@ -1,4 +1,4 @@
-{% load static  %}
+{% load static %}
 
 
 <!DOCTYPE html>
@@ -74,57 +74,56 @@
                     {% endblock %}
                 </div>
                 <ul class="nav navbar-nav float-right">
-{#                    <li class="nav-item d-none d-lg-block">#}
-{#                        <a class="nav-link nav-link-search" href="#" target="_blank">#}
-{#                            <i class="ficon bx bx-globe"></i>#}
-{#                        </a>#}
-{#                    </li>#}
+                    {#                    <li class="nav-item d-none d-lg-block">#}
+                    {#                        <a class="nav-link nav-link-search" href="#" target="_blank">#}
+                    {#                            <i class="ficon bx bx-globe"></i>#}
+                    {#                        </a>#}
+                    {#                    </li>#}
                     <li class="nav-item d-none d-lg-block">
                         <a class="nav-link nav-link-expand">
                             <i class="ficon bx bx-fullscreen"></i>
                         </a>
                     </li>
-{#		                    <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"#}
-{#		                                                                       id="dropdown-flag" href="#"#}
-{#		                                                                       data-toggle="dropdown" aria-haspopup="true"#}
-{#		                                                                       aria-expanded="false">#}
-{#		                        {% if LANGUAGE_CODE == 'ru' %}<i class="flag-icon flag-icon-ru"></i><span#}
-{#		                                class="selected-language">Русский </span>#}
-{#		                        {% elif LANGUAGE_CODE == 'uz' %}<i class="flag-icon flag-icon-uz"></i><span#}
-{#		                                class="selected-language"> O`zbekcha</span>#}
-{#		                        {% elif LANGUAGE_CODE == 'en' %}<i class="flag-icon flag-icon-gb"></i><span#}
-{#		                                class="selected-language"> English</span> {% endif %} </a>#}
-{##}
-{#		                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">#}
-{#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='uz' %}">#}
-{#		                                <i class="flag-icon flag-icon-uz mr-50"></i> O'zbekcha</a>#}
-{#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='ru' %}">#}
-{#		                                <i class="flag-icon flag-icon-ru mr-50"></i> Русский</a>#}
-{#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='en' %}">#}
-{#		                                <i class="flag-icon flag-icon-gb mr-50"></i> English</a>#}
-{#		                        </div>#}
-{#		                    </li>#}
+                    {#		                    <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"#}
+                    {#		                                                                       id="dropdown-flag" href="#"#}
+                    {#		                                                                       data-toggle="dropdown" aria-haspopup="true"#}
+                    {#		                                                                       aria-expanded="false">#}
+                    {#		                        {% if LANGUAGE_CODE == 'ru' %}<i class="flag-icon flag-icon-ru"></i><span#}
+                    {#		                                class="selected-language">Русский </span>#}
+                    {#		                        {% elif LANGUAGE_CODE == 'uz' %}<i class="flag-icon flag-icon-uz"></i><span#}
+                    {#		                                class="selected-language"> O`zbekcha</span>#}
+                    {#		                        {% elif LANGUAGE_CODE == 'en' %}<i class="flag-icon flag-icon-gb"></i><span#}
+                    {#		                                class="selected-language"> English</span> {% endif %} </a>#}
+                    {##}
+                    {#		                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">#}
+                    {#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='uz' %}">#}
+                    {#		                                <i class="flag-icon flag-icon-uz mr-50"></i> O'zbekcha</a>#}
+                    {#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='ru' %}">#}
+                    {#		                                <i class="flag-icon flag-icon-ru mr-50"></i> Русский</a>#}
+                    {#		                            <a class="dropdown-item" href="{% get_language_url request=request lang='en' %}">#}
+                    {#		                                <i class="flag-icon flag-icon-gb mr-50"></i> English</a>#}
+                    {#		                        </div>#}
+                    {#		                    </li>#}
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name">{{ request.user.username }}</span></div>
                             <span>
                                 <img class="round"
-                                        {% if request.user.image %} src="{{ request.user.image.url }}"
-                                        {% else %} src="{% static 'back/app-assets/images/pages/default-profile.png' %}"
-                                        {% endif %} alt="avatar" height="40" width="40">
+                                     src="{% static 'admin/img/admin_default_avatar.png' %}"
+                                     alt="avatar" height="38" width="38">
                             </span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right pb-0">
+                        <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">
-                                <i class="bx bx-user mr-50"></i> Profilni tahrirlash
+                                <i class="bx bx-user mr-50"></i> Update Profile
                             </a>
                             {#                            <a class="dropdown-item" href="{% url 'profile' %}">#}
                             {#                                <i>class="bx bx-user mr-50"></i> {% trans 'Profilni tahrirlash' %}#}
                             {#                            </a>#}
                             <div class="dropdown-divider mb-0"></div>
                             <a class="dropdown-item" href="#"><i class="bx bx-power-off mr-50"></i>
-                          Chiqish</a>
+                                Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -148,7 +147,7 @@
             </div>
             <div class="modal-body">
                 <h5>
-       Ma'lumotni o'chirishni tasdiqlaysizmi?
+                    Ma'lumotni o'chirishni tasdiqlaysizmi?
                 </h5>
             </div>
             <div class="modal-footer">
