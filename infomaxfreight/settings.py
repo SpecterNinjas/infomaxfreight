@@ -136,7 +136,7 @@ USE_TZ = True
 LOGIN_URL = 'main_app:main-admin-login'
 # LOGIN_REDIRECT_URL = 'main_app:main-admin-login'
 
-LOGOUT_REDIRECT_URL = 'main_app:main-admin-login'
+LOGOUT_REDIRECT_URL = 'main_app:main_page'
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

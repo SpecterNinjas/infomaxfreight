@@ -1,13 +1,17 @@
 from django.urls import path
 from . import views
 from main_admin.views import admin_login_view
-
+from django.contrib.auth import views as auth_views
 app_name = 'main_app'
 
 urlpatterns = [
 
     path('', views.MainView.as_view(), name="main_page"),
     path('login/', admin_login_view, name='main-admin-login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+
+
+
     # NAVBAR
     path("navigation/", views.NavigationView.as_view(), name="navigation"),
     path("navigation_create/", views.NavigationCreateView.as_view(), name="navigation_create"),
