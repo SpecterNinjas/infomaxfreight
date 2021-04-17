@@ -63,7 +63,7 @@
             {#  Services #}
             <li class=" nav-item news">
                 <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Service</span>
+                    <span class="menu-title">Services</span>
                 </a>
                 <ul class="menu-content">
                     <li>
@@ -136,6 +136,27 @@
                 </ul>
             </li>
 
+
+            {# Carriers Form #}
+            <li class="nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Carriers Form</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:carriers_form' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Carriers Form</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:carriers_form_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
             {#  CarriesApplication #}
             <li class=" nav-item news">
                 <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
@@ -154,6 +175,124 @@
                     </li>
                 </ul>
             </li>
+
+
+            {# Shipper Form #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Shipper Form</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:shipper_form' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Shipper Forms</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:shipper_form_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Vacancies #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Vacancies</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:vacancy' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Vacancies</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:vacancy_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            {# Careers #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Careers</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:career' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Careers</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:career_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Request Quote #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Request Quote</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:quote' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Request Quotes</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:quote_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# Statistics #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Statistics</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:statistics' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">All Statistics</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:statistics_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            {# Insights #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">Insights</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:insight' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View Insights</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:insight_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
 
             {#  TruckloadType #}
             <li class=" nav-item news">
@@ -232,138 +371,6 @@
                 </ul>
             </li>
 
-            {# Shipper Form #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Shipper Form</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:shipper_form' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">All Shipper Forms</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:shipper_form_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# About Us #}
-            <li class=" nav-item news">
-                <a href=""><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">About Us</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:about_us' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">View About Us</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:about_us_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# Statistics #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Statistics</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:statistics' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">All Statistics</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:statistics_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# About Us Section #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">About Us Section</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:about_section' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">View About Section</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:about_section_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# Team #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Team</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:team' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">All Team Members</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:team_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# Insights #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Insights</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:insight' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">View Insights</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:insight_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
-
-            {# Careers #}
-            <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Careers</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:career' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">View Careers</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:career_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
 
             {# Payment Type #}
             <li class=" nav-item news">
@@ -403,19 +410,19 @@
                 </ul>
             </li>
 
-            {# Vacancies #}
+            {# Team #}
             <li class=" nav-item news">
                 <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Vacancies</span>
+                    <span class="menu-title">Team</span>
                 </a>
                 <ul class="menu-content">
                     <li>
-                        <a href="{% url 'main_app:vacancy' %}">
+                        <a href="{% url 'main_app:team' %}">
                             <i class="bx bx-list-ul"></i><span
-                                class="menu-item">All Vacancies</span></a>
+                                class="menu-item">All Team Members</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'main_app:vacancy_create' %}">
+                        <a href="{% url 'main_app:team_create' %}">
                             <i class="bx bx-plus"></i><span
                                 class="menu-item">New</span></a>
                     </li>
@@ -436,19 +443,39 @@
                 </ul>
             </li>
 
-            {# Request Quote #}
+
+            {# About Us #}
             <li class=" nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Request Quote</span>
+                <a href=""><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">About Us</span>
                 </a>
                 <ul class="menu-content">
                     <li>
-                        <a href="{% url 'main_app:quote' %}">
+                        <a href="{% url 'main_app:about_us' %}">
                             <i class="bx bx-list-ul"></i><span
-                                class="menu-item">All Request Quotes</span></a>
+                                class="menu-item">View About Us</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'main_app:quote_create' %}">
+                        <a href="{% url 'main_app:about_us_create' %}">
+                            <i class="bx bx-plus"></i><span
+                                class="menu-item">New</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            {# About Us Section #}
+            <li class=" nav-item news">
+                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
+                    <span class="menu-title">About Us Section</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="{% url 'main_app:about_section' %}">
+                            <i class="bx bx-list-ul"></i><span
+                                class="menu-item">View About Section</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main_app:about_section_create' %}">
                             <i class="bx bx-plus"></i><span
                                 class="menu-item">New</span></a>
                     </li>
@@ -508,24 +535,6 @@
                 </ul>
             </li>
 
-            {# Carriers Form #}
-            <li class="nav-item news">
-                <a href="#"><i class="menu-livicon" data-icon="info-alt"></i>
-                    <span class="menu-title">Carriers Form</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{% url 'main_app:carriers_form' %}">
-                            <i class="bx bx-list-ul"></i><span
-                                class="menu-item">View Carriers Form</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'main_app:carriers_form_create' %}">
-                            <i class="bx bx-plus"></i><span
-                                class="menu-item">New</span></a>
-                    </li>
-                </ul>
-            </li>
 
         </ul>
     </div>

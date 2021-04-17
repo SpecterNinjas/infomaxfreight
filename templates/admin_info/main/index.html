@@ -17,18 +17,18 @@
             {#            {% if user|has_role:"admin_temp" %}#}
             <div class="row">
                 <div class="col-12 mt-1 mb-2">
-                    <h4>Statistika</h4>
+                    <h4>Quick Menu</h4>
                     <hr>
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:vacancy' %}">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-danger mx-auto my-1">
                                         <i class="bx bx-news font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Yangiliklar</p>
+                                    <p class="text-muted mb-0 line-ellipsis">Vacancies</p>
                                     <h2 class="mb-0">{{ news_count }}</h2>
                                 </div>
                             </div>
@@ -38,14 +38,14 @@
 
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:carriers_form' %}">
 
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-info mx-auto my-1">
                                         <i class="bx bxs-pencil font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Loyihalar</p>
+                                    <p class="text-muted mb-0 line-ellipsis">Carrier Forms</p>
                                     <h2 class="mb-0">{{ project_count }}</h2>
                                 </div>
                             </div>
@@ -54,13 +54,13 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:shipper_form' %}">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-warning mx-auto my-1">
                                         <i class="bx bx-images font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Media</p>
+                                    <p class="text-muted mb-0 line-ellipsis">Shippers</p>
                                     <h2 class="mb-0">{{ media_count }}</h2>
                                 </div>
                             </div>
@@ -69,13 +69,13 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:service' %}">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-primary mx-auto my-1">
                                         <i class="bx bx-calendar-event font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Tadbirlar</p>
+                                    <p class="text-muted mb-0 line-ellipsis">Services</p>
                                     <h2 class="mb-0">{{ event_count }}</h2>
                                 </div>
                             </div>
@@ -84,13 +84,13 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:faq' %}">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-warning mx-auto my-1">
                                         <i class="bx bx-book font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Tadqiqotlar</p>
+                                    <p class="text-muted mb-0 line-ellipsis">FAQ</p>
                                     <h2 class="mb-0">{{ activity_count }}</h2>
                                 </div>
                             </div>
@@ -99,13 +99,13 @@
                 </div>
                 <div class="col-xl-2 col-md-6 col-sm-12">
                     <div class="card text-center">
-                        <a href="#">
+                        <a href="{% url 'main_app:team' %}">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="badge-circle badge-circle-lg badge-circle-light-success mx-auto my-1">
                                         <i class="bx bx-user font-medium-5"></i>
                                     </div>
-                                    <p class="text-muted mb-0 line-ellipsis">Hodimlar</p>
+                                    <p class="text-muted mb-0 line-ellipsis">Team</p>
                                     <h2 class="mb-0">{{ staff_count }}</h2>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
             {#            {% endif %}#}
             <div class="row widgets-text-chart">
                 <div class="col-12 mt-1 mb-2">
-                    <h4>So'nggi yangiliklar</h4>
+                    <h4>Regular Checking</h4>
                     <hr>
                 </div>
                 <div class="col-lg-8">
@@ -125,47 +125,47 @@
                             <div class="card widget-todo">
                                 <div class="card-header border-bottom d-flex justify-content-between align-items-center">
                                     <h4 class="card-title d-flex">
-                                        <i class="bx bx-news font-medium-5 pl-25 pr-75"></i>Yangiliklar
+                                        <i class="bx bx-news font-medium-5 pl-25 pr-75"></i>Contact Us
                                     </h4>
                                     <ul class="list-inline d-flex mb-0">
 
                                         <div class="heading-elements">
-                                            <a href="#">
+                                            <a href="{% url 'main_app:contact' %}">
                                                 <button type="button"
-                                                        class="btn btn-sm btn-light-danger">Barcha</button>
+                                                        class="btn btn-sm btn-light-danger">All</button>
                                             </a>
                                         </div>
                                     </ul>
                                 </div>
                                 {#                                {% if user|has_role:"admin_temp" %}#}
-                                <div class="card-body px-0 py-0">
-                                    <ul class="list-group list-group-flush">
+{#                                <div class="card-body px-0 py-0">#}
+{#                                    <ul class="list-group list-group-flush">#}
                                         {#                                            {% for news in latest_news %}#}
-                                        <li class="list-group-item list-group-item-action border-0 d-flex align-items-center justify-content-between">
-                                            <div class="list-left d-flex">
-                                                <div class="list-content">
-                                                    <a href="#">
+{#                                        <li class="list-group-item list-group-item-action border-0 d-flex align-items-center justify-content-between">#}
+{#                                            <div class="list-left d-flex">#}
+{#                                                <div class="list-content">#}
+{#                                                    <a href="#">#}
                                                         {#                                                                <span class="list-title">{{ news.title|safe|truncatechars:135 }}</span>#}
-                                                        <span class="list-title">Test</span>
-                                                    </a>
+{#                                                        <span class="list-title">Test</span>#}
+{#                                                    </a>#}
                                                     {#                                                            <small class="text-muted d-block">{{ news.created_at|date:"d-F, H:i" }}</small>     #}
-                                                    <small class="text-muted d-block">06/04/21</small>
-                                                </div>
-                                            </div>
+{#                                                    <small class="text-muted d-block">06/04/21</small>#}
+{#                                                </div>#}
+{#                                            </div>#}
                                             {#                                                    <a href="{% url 'news:news-update' news.id %}">#}
-                                            <a href="#">
-                                                <div class="list-icon mr-0">
-                                                    <div class="avatar bg-rgba-danger m-0 p-25">
-                                                        <div class="avatar-content">
-                                                            <i class="bx bx-edit-alt text-danger font-medium-5 "></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
+{#                                            <a href="#">#}
+{#                                                <div class="list-icon mr-0">#}
+{#                                                    <div class="avatar bg-rgba-danger m-0 p-25">#}
+{#                                                        <div class="avatar-content">#}
+{#                                                            <i class="bx bx-edit-alt text-danger font-medium-5 "></i>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </a>#}
+{#                                        </li>#}
                                         {#                                            {% endfor %}#}
-                                    </ul>
-                                </div>
+{#                                    </ul>#}
+{#                                </div>#}
 
                                 {% comment %}         {% else %}
                                     <div class="card-content">
@@ -206,11 +206,11 @@
                     <div class="card widget-notification">
                         <div class="card-header border-bottom">
                             <h4 class="card-title d-flex align-items-center">
-                                <i class="bx bx-edit font-medium-4 mr-1"></i>Tadbirlar</h4>
+                                <i class="bx bx-edit font-medium-2 mr-1"></i>Request Quotes</h4>
                             <div class="heading-elements">
-                                <a href="#">
+                                <a href="{% url 'main_app:quote' %}">
                                     <button type="button"
-                                            class="btn btn-sm btn-light-primary">Barcha</button>
+                                            class="btn btn-sm btn-light-primary">All</button>
                                 </a>
 
                             </div>
