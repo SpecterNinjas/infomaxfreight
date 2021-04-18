@@ -46,7 +46,7 @@
                                         {% endif %}{% endcomment %}
                                     </li>
                                     <li class="add-new-button"><a class="btn btn-primary"
-                                                                  href="{% url 'main_app:carriers_create' %}"><i
+                                                                  href="{% url 'main_app:carriers_create_section' %}"><i
                                             class="bx bxs-plus-square mr-1"></i>Create</a></li>
                                 </ul>
                             </div>
@@ -74,7 +74,7 @@
                                     <tr>
                                         <td class="pr-2">{{ forloop.counter }}</td>
                                         <td class="pl-0">
-                                            <a href="{% url 'main_app:carriers_update' carrier.pk %}">{{ carrier.title|safe | truncatechars:"150" }}</a>
+                                            <a href="{% url 'main_app:carriers_update_section' carrier.pk %}">{{ carrier.title|safe | truncatechars:"150" }}</a>
                                         </td>
                                         <td class="text-left">{{ carrier.image }}</td>
 
@@ -86,11 +86,11 @@
                                                       role="menu"></span>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item"
-                                                       href="{% url 'main_app:carriers_update' carrier.pk %}"><i
+                                                       href="{% url 'main_app:carriers_update_section' carrier.pk %}"><i
                                                             class="bx bx-edit-alt mr-1"></i>Edit</a>
 
                                                     <a class="dropdown-item" data-id="{{ carrier.id }}"
-                                                       href="{% url 'main_app:carriers_delete' carrier.id %}"><i
+                                                       href="{% url 'main_app:carriers_delete_section' carrier.id %}"><i
                                                             class="bx bx-trash mr-1"></i>
                                                         Delete</a>
                                                 </div>

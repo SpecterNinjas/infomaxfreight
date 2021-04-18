@@ -76,8 +76,8 @@
                                         <td class="pl-0">
                                             <a href="{% url 'main_app:slider_update' slider.pk %}">{{ slider.title|safe | truncatechars:"150" }}</a>
                                         </td>
-                                        <td class="text-center">{{ slider.description }}</td>
-                                        <td class="text-center">{{ slider.draft }}</td>
+                                        <td class="text-left">{{ slider.description }}</td>
+                                        <td class="text-left">{{ slider.draft }}</td>
                                         <td class="text-right amallar">
                                             <div class="dropdown">
                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer"

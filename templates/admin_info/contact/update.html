@@ -84,68 +84,70 @@
 
                                 <div class="row">
                                     <div class="col">
-                                         <div class="tab-content main-editor">
-                                    <div class="tab-pane active" id="uzbek" role="tabpanel" aria-labelledby="home-tab"
-                                         aria-expanded="false">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title" style="text-transform: inherit;">Email</h4>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body pb-0 mx-25">
-                                                    <div class="row invoice-info">
-                                                        <div class="col-lg-12 col-md-12">
-                                                            <fieldset class="invoice-address form-group">
-                                                                <input type="email" required
-                                                                       class="form-control"
-                                                                       v-model="email_uz"
-                                                                       name="email"
-                                                                       value="{{ contact.email }}">
-                                                            </fieldset>
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Email</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="email" required
+                                                                               class="form-control"
+                                                                               v-model="email_uz"
+                                                                               name="email"
+                                                                               value="{{ contact.email }}">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
-                                    </div>
-
-
-
-                                </div>
                                     </div>
                                     <div class="col">
-                                         <div class="tab-content main-editor">
-                                    <div class="tab-pane active" id="uzbek" role="tabpanel" aria-labelledby="home-tab"
-                                         aria-expanded="false">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title" style="text-transform: inherit;">Phone</h4>
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="card-body pb-0 mx-25">
-                                                    <div class="row invoice-info">
-                                                        <div class="col-lg-12 col-md-12">
-                                                            <fieldset class="invoice-address form-group">
-                                                                <input type="text" required
-                                                                       class="form-control"
-                                                                       v-model="phone_uz"
-                                                                       name="phone"
-                                                                       value="{{ contact.phone }}">
-                                                            </fieldset>
+                                        <div class="tab-content main-editor">
+                                            <div class="tab-pane active" id="uzbek" role="tabpanel"
+                                                 aria-labelledby="home-tab"
+                                                 aria-expanded="false">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title" style="text-transform: inherit;">
+                                                            Phone</h4>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div class="card-body pb-0 mx-25">
+                                                            <div class="row invoice-info">
+                                                                <div class="col-lg-12 col-md-12">
+                                                                    <fieldset class="invoice-address form-group">
+                                                                        <input type="text" required
+                                                                               class="form-control"
+                                                                               v-model="phone_uz"
+                                                                               name="phone"
+                                                                               value="{{ contact.phone }}">
+                                                                    </fieldset>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
                                     </div>
-
-
-
-                                </div>
-                                    </div>
                                 </div>
 
-                                     <div class="tab-content main-editor">
+                                <div class="tab-content main-editor">
                                     <div class="tab-pane active" id="uzbek" role="tabpanel"
                                          aria-labelledby="home-tab"
                                          aria-expanded="false">
@@ -162,10 +164,7 @@
                                                                     <textarea rows="7" cols="30"
                                                                               class="form-control invoice-address form-group"
                                                                               name="message"
-                                                                               required>
-                                                                        {{ contact.message }}
-                                                                    </textarea>
-
+                                                                              required>{{ contact.message }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

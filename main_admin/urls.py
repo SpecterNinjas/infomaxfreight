@@ -44,9 +44,9 @@ urlpatterns = [
 
     # Carriers
     path("carriers_desc/", views.CarrierView.as_view(), name="carriers"),
-    path("carriers_create/", views.CarrierCreateView.as_view(), name="carriers_create"),
-    path("carriers/<int:pk>/", views.CarrierUpdateView.as_view(), name="carriers_update"),
-    path("carriers_delete/<int:pk>/", views.CarrierDeleteView.as_view(), name="carriers_delete"),
+    path("carriers_create/", views.CarrierCreateView.as_view(), name="carriers_create_section"),
+    path("carriers/<int:pk>/", views.CarrierUpdateView.as_view(), name="carriers_update_section"),
+    path("carriers_delete/<int:pk>/", views.CarrierDeleteView.as_view(), name="carriers_delete_section"),
 
     # Carriers Application
     path("carriers_app/", views.CarriersAppView.as_view(), name="carriers_app"),

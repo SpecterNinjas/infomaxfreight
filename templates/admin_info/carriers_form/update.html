@@ -73,7 +73,7 @@
                                                             <div class="row invoice-info">
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
-                                                                        <input type="text" required autofocus
+                                                                        <input type="text" required
                                                                                class="form-control"
                                                                                v-model="fullname_uz"
                                                                                name="fullname"
@@ -435,10 +435,7 @@
                                                                     <textarea rows="7" cols="30"
                                                                               class="form-control invoice-address form-group"
                                                                               name="comments"
-                                                                              placeholder="Add Comment" required>
-                                                                        {{ carriers_form.comments }}
-                                                                    </textarea>
-
+                                                                              placeholder="Add Comment" required>{{ carriers_form.comments }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

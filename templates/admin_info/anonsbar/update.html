@@ -72,12 +72,11 @@
                                                         <div class="row invoice-info">
                                                             <div class="col-lg-12 col-md-12">
                                                                 <fieldset class="invoice-address form-group">
-                                                                    <input type="text" required
+                                                                    <textarea required rows="10"
                                                                            class="form-control"
                                                                            v-model="description_uz"
                                                                            name="description"
-                                                                           value="{{ anonsbar.description }}"
-                                                                           placeholder="Add Description">
+                                                                              placeholder="Add Description">{{ anonsbar.description }}</textarea>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
