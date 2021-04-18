@@ -64,7 +64,7 @@
                                 <thead>
                                 <tr>
                                     <th class="pr-2">№</th>
-                                    <th class="pl-0">title</th>
+                                    <th class="pl-0">Truck Type</th>
                                     <th class="pl-2">Available</th>
                                 </tr>
                                 </thead>
@@ -76,7 +76,7 @@
                                             <a href="{% url 'main_app:truck_type_update' truckload_type.pk %}">{{ truckload_type.title|safe | truncatechars:"150" }}</a>
                                         </td>
 
-                                        <td class="text-left">{{ truckload_type.is_available }}</td>
+                                        <td class="text-left">{% if truckload_type.is_available %}Yes{% else %}No{% endif %}</td>
                                         <td class="text-right amallar">
                                             <div class="dropdown">
                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer"
