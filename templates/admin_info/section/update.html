@@ -171,10 +171,12 @@
                                     <div class="col-lg-6 col-md-6">
                                         <h4>Image</h4>
                                         <fieldset class="invoice-address form-group pb-1">
-                                            <input type="file" required
-                                                   class="form-control"
+                                            <label for="files" class="text-capitalize text-center" style="border: 1px solid rgb(0,207,221);font-size:1.1em;width:150px; color: rgb(0,207,221); padding: 7px;cursor: pointer; border-radius: 5px; background-color: white">{% if section.image %}Change Image{% else %}Upload{% endif %}</label>
+                                            <br><strong>Previous Path:</strong> {{ section.image.url }}
+                                            <input type="file" title=" " style="display: none;"
+                                                   class="form-control" id="files"
                                                    v-model="image"
-                                                   name="image"
+                                                   name="image" value="{{ section.image.url }}"
                                                    placeholder="Add Image">
                                         </fieldset>
                                     </div>
@@ -183,11 +185,12 @@
                                     <div class="col-lg-6 col-md-6">
                                         <h4>Icon</h4>
                                         <fieldset class="invoice-address form-group pb-1">
-                                            <input type="file" required
-                                                   class="form-control"
+                                           <label for="files2" class="text-capitalize text-center" style="border: 1px solid rgb(0,207,221);font-size:1.1em;width:150px; color: rgb(0,207,221); padding: 7px;cursor: pointer; border-radius: 5px; background-color: white">{% if section.icon %}Change Icon{% else %}Upload{% endif %}</label>
+                                            <br><strong>Previous Path:</strong> {{ section.icon.url }}
+                                            <input type="file" title=" " style="display: none;"
+                                                   class="form-control" id="files2"
                                                    v-model="icon"
-                                                   name="icon"
-                                                   placeholder="Add Icon">
+                                                   name="icon" value="{{ section.icon.url }}">
                                         </fieldset>
                                     </div>
 

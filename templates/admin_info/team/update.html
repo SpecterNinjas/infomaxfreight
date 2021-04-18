@@ -311,11 +311,13 @@
                                                             <div class="row invoice-info">
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
-                                                                        <input type="file" required
-                                                                               class="form-control"
-                                                                               v-model="image_uz"
-                                                                               name="image"
-                                                                               placeholder="Add Image">
+                                                                       <label for="files" class="text-capitalize text-center" style="border: 1px solid rgb(0,207,221);font-size:1.1em;width:150px; color: rgb(0,207,221); padding: 7px;cursor: pointer; border-radius: 5px; background-color: white">{% if member.image %}Change Image{% else %}Upload{% endif %}</label>
+                                            <br><strong>Previous Path:</strong> {{ member.image.url }}
+                                            <input type="file" title=" " style="display: none;"
+                                                   class="form-control" id="files"
+                                                   v-model="image"
+                                                   name="image" value="{{ member.image.url }}"
+                                                   placeholder="Add Image">
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
