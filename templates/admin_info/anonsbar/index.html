@@ -77,7 +77,7 @@
                                             <a href="{% url 'main_app:anonsbar_update' anons.pk %}">{{ anons.image|safe | truncatechars:"150" }}</a>
                                         </td>
                                         <td class="text-left">{{ anons.url }}</td>
-                                        <td class="text-left">{{ anons.is_active }}</td>
+                                        <td class="text-left">{% if anons.is_active %}Yes{% else %}No{% endif %}</td>
                                         <td class="text-right amallar">
                                             <div class="dropdown">
                                                 <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer"
