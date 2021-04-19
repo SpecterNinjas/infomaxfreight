@@ -110,8 +110,18 @@ class CareersListView(ListAPIView):
 
 class StandardResultsSetPagination(PageNumberPagination):
     page_size = 9
-    page_size_query_param = 'page_size'
+    page_size_query_param = 'size'
     max_page_size = 1000
+
+    def get_paginated_response(self, data):
+        return Response({
+            'per_page': self.page_size,
+            'current_page': self.page.number,
+            'total_pages': self.page.paginator.num_pages,
+            # 'page_items': len(self.page),
+            'total': self.page.paginator.count,
+            'results': data
+        })
 
 
 class VacanciesListView(ListAPIView):
