@@ -22,6 +22,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--===============================================================================================-->
 </head>
 <body>
@@ -60,6 +62,16 @@
                 </div>
                 <script src='https://www.google.com/recaptcha/api.js'></script>
                 <div class="g-recaptcha" data-sitekey="6LfWIbAaAAAAACQtAFIrCW77_98d6IuKDy4WKwFB"></div>
+
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" type="submit">
                         Login

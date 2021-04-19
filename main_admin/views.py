@@ -9,7 +9,7 @@ from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 import requests
-
+from django.contrib import messages
 
 def admin_login_view(request):
     if request.method == 'POST':
@@ -31,12 +31,15 @@ def admin_login_view(request):
                     login(request, user)
                     return redirect('main_app:main_page')
                 else:
-                    return HttpResponse("Gotcha. You are a bot!")
+                    messages.error(request, 'Invalid reCAPTCHA.')
+                    return redirect('main_app:main-admin-login')
 
             else:
-                return HttpResponse("Your account was inactive.")
+                messages.error(request, "Your account was inactive.")
+                return redirect('main_app:main-admin-login')
         else:
-            return HttpResponse("Invalid login details given")
+            messages.error(request, "Invalid login details given")
+            return redirect('main_app:main-admin-login')
     elif request.method == 'GET':
 
         return render(request, 'admin_info/AdminLogin/index.html')

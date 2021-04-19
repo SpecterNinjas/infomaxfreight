@@ -44,7 +44,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -147,6 +146,15 @@ USE_TZ = True
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfWIbAaAAAAACnxfbAlTP21Ks11PPyCEwL91n9F'
 
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 LOGIN_URL = 'main_app:main-admin-login'
 # LOGIN_REDIRECT_URL = 'main_app:main-admin-login'
