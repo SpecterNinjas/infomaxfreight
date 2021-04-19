@@ -7,6 +7,8 @@ from django.views.generic import ListView, UpdateView, DeleteView
 from main.models import *
 from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
+import requests
 
 
 def admin_login_view(request):
@@ -16,8 +18,21 @@ def admin_login_view(request):
         user = authenticate(username=username, password=password)
         if user:
             if user.is_active:
-                login(request, user)
-                return redirect('main_app:main_page')
+                ''' Begin reCAPTCHA validation '''
+                recaptcha_response = request.POST.get('g-recaptcha-response')
+                data = {
+                    'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                    'response': recaptcha_response
+                }
+                r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+                result = r.json()
+                ''' End reCAPTCHA validation '''
+                if result['success']:
+                    login(request, user)
+                    return redirect('main_app:main_page')
+                else:
+                    return HttpResponse("Gotcha. You are a bot!")
+
             else:
                 return HttpResponse("Your account was inactive.")
         else:

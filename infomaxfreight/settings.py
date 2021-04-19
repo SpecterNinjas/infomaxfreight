@@ -145,6 +145,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LfWIbAaAAAAACnxfbAlTP21Ks11PPyCEwL91n9F'
+
+
 LOGIN_URL = 'main_app:main-admin-login'
 # LOGIN_REDIRECT_URL = 'main_app:main-admin-login'
 
