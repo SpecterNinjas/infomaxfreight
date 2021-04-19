@@ -195,10 +195,10 @@ class Team(models.Model):
     image = models.FileField(upload_to='main/team/', default='main/team/avatar-default.png')
 
     # Social media
-    twitter = models.URLField(max_length=32, null=True, blank=True)
-    facebook = models.URLField(max_length=32, null=True, blank=True)
-    telegram = models.URLField(max_length=32, null=True, blank=True)
-    instagram = models.URLField(max_length=32, null=True, blank=True)
+    twitter = models.URLField(max_length=64, null=True, blank=True)
+    facebook = models.URLField(max_length=64, null=True, blank=True)
+    telegram = models.URLField(max_length=64, null=True, blank=True)
+    instagram = models.URLField(max_length=64, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Team'
@@ -334,10 +334,10 @@ class Footer(models.Model):
     copyright = models.CharField(max_length=256)
 
     # Social media
-    twitter = models.URLField(max_length=32, null=True, blank=True)
-    facebook = models.URLField(max_length=32, null=True, blank=True)
-    telegram = models.URLField(max_length=32, null=True, blank=True)
-    instagram = models.URLField(max_length=32, null=True, blank=True)
+    twitter = models.URLField(max_length=64, null=True, blank=True)
+    facebook = models.URLField(max_length=64, null=True, blank=True)
+    telegram = models.URLField(max_length=64, null=True, blank=True)
+    instagram = models.URLField(max_length=64, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Footer'
@@ -353,7 +353,7 @@ class CarriersForm(models.Model):
     delivery_date = models.DateField(default=date.today)
     from_city = models.CharField(max_length=128)
     to_city = models.CharField(max_length=128)
-    phone = models.CharField(max_length=16)
+    phone = models.CharField(max_length=13)
     email = models.EmailField(max_length=64)
     comments = models.TextField(max_length=3000)
 

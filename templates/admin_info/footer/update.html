@@ -59,6 +59,7 @@
                                                                                class="form-control"
                                                                                v-model="phone_uz"
                                                                                name="phone"
+                                                                               maxlength="13"
                                                                                value="{{ footer.phone }}"
                                                                                placeholder="Add Phone">
                                                                     </fieldset>
@@ -138,6 +139,7 @@
                                                                                class="form-control"
                                                                                v-model="fax_uz"
                                                                                name="fax"
+                                                                               maxlength="13"
                                                                                value="{{ footer.fax }}"
                                                                                placeholder="Add Fax">
                                                                     </fieldset>
@@ -536,12 +538,12 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="url"
+                                                                               pattern="http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)"
                                                                                class="form-control"
                                                                                v-model="twitter_uz"
                                                                                name="twitter"
-                                                                               value="
+                                                                               value="{% if footer.twitter %}{{ footer.twitter }}{% endif %}"
 
-                                                                                       {% if footer.twitter %}{{ footer.twitter }}{% endif %}"
                                                                                placeholder="Add Twitter">
                                                                     </fieldset>
                                                                 </div>
@@ -617,11 +619,12 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="url"
+                                                                               pattern="http(?:s)?:\/\/(?:www\.)?facebook\.com\/([a-zA-Z0-9_]+)"
                                                                                class="form-control"
                                                                                v-model="facebook_uz"
                                                                                name="facebook"
-                                                                               value="
-                                                                                       {% if footer.facebook %}{{ footer.facebook }}{% endif %}"
+                                                                               value="{% if footer.facebook %}{{ footer.facebook }}{% endif %}"
+
                                                                                placeholder="Add Facebook">
                                                                     </fieldset>
                                                                 </div>
@@ -699,11 +702,12 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="url"
+                                                                               pattern="http(?:s)?:\/\/(?:www\.)?t\.me\/([a-zA-Z0-9_]+)"
                                                                                class="form-control"
                                                                                v-model="telegram_uz"
                                                                                name="telegram"
-                                                                               value="
-                                                                                       {% if footer.telegram %}{{ footer.telegram }}{% endif %}"
+                                                                               value="{% if footer.telegram %}{{ footer.telegram }}{% endif %}"
+
                                                                                placeholder="Add Telegram">
                                                                     </fieldset>
                                                                 </div>
@@ -779,12 +783,11 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="url"
-                                                                               class="form-control"
+                                                                                class="form-control"
                                                                                v-model="instagram_uz"
                                                                                name="instagram"
-                                                                               value="
-
-                                                                                       {% if footer.instagram %}{{ footer.instagram }}{% endif %}"
+                                                                              pattern="http(?:s)?:\/\/(?:www\.)?instagram\.com\/([a-zA-Z0-9_]+)"
+                                                                               value="{% if footer.instagram %}{{ footer.instagram }}{% endif %}"
                                                                                placeholder="Add Instagram">
                                                                     </fieldset>
                                                                 </div>
