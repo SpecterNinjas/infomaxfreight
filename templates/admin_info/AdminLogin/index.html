@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--===============================================================================================-->
+
 </head>
 <body>
 
@@ -36,7 +37,8 @@
                 <img src="{% static 'login/images/img-01.png' %}" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form" method="POST" action="{% url 'main_app:main-admin-login' %}"
+            <form class="login100-form validate-form" id="wdh_form" method="POST"
+                  action="{% url 'main_app:main-admin-login' %}"
                   autocomplete="off">
 
                 {% csrf_token %}
@@ -60,8 +62,18 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
                 </div>
+
                 <script src='https://www.google.com/recaptcha/api.js'></script>
-                <div class="g-recaptcha" data-sitekey="6LfWIbAaAAAAACQtAFIrCW77_98d6IuKDy4WKwFB"></div>
+                <div
+                        class="g-recaptcha"
+                        data-callback="gCBS"
+                        data-expired-callback="gCBE"
+                        data-error-callback="gCBE"
+                        data-sitekey="6LfWIbAaAAAAACQtAFIrCW77_98d6IuKDy4WKwFB">
+                </div>
+
+                <div id="captchaerror"></div>
+
 
                 {% for message in messages %}
                     <div class="alert {{ message.tags }} alert-dismissible" role="alert">
@@ -77,6 +89,7 @@
                         Login
                     </button>
                 </div>
+
 
             </form>
         </div>
@@ -96,10 +109,30 @@
 <script>
     $('.js-tilt').tilt({
         scale: 1.1
+    });
+
+    console.log($('#recaptcha-anchor'))
+
+    var gCS = false
+    function gCBS() { gCS = true; $('#captchaerror').empty() }
+    function gCBE() { gCS = false }
+
+    $('#wdh_form').submit(function (e) {
+        if (!gCS) {
+            e.preventDefault()
+            $('#captchaerror').empty().append('<div class="alert alert-danger alert-dismissible" role="alert">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+                'Check reCaptcha' +
+                '</div>')
+        }
     })
+
 </script>
 <!--===============================================================================================-->
 <script src="{% static 'login/js/main.js' %}"></script>
+
 
 </body>
 </html>

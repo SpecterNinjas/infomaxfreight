@@ -17,7 +17,7 @@ class Slider(models.Model):
     description = models.TextField("Description", max_length=1024)
     image = models.FileField("Image", upload_to='main/slider/')
     draft = models.BooleanField("Draft", default=True)
-    url = models.SlugField("Url", blank=True, null=True)
+    url = models.SlugField("Url", blank=True, null=True, max_length=500)
 
     def __str__(self):
         return self.title

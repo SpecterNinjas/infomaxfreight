@@ -11,6 +11,7 @@ from django.conf import settings
 import requests
 from django.contrib import messages
 
+
 def admin_login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -20,6 +21,7 @@ def admin_login_view(request):
             if user.is_active:
                 ''' Begin reCAPTCHA validation '''
                 recaptcha_response = request.POST.get('g-recaptcha-response')
+
                 data = {
                     'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
                     'response': recaptcha_response
@@ -27,21 +29,21 @@ def admin_login_view(request):
                 r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
                 result = r.json()
                 ''' End reCAPTCHA validation '''
+
                 if result['success']:
                     login(request, user)
                     return redirect('main_app:main_page')
                 else:
                     messages.error(request, 'Invalid reCAPTCHA.')
                     return redirect('main_app:main-admin-login')
-
             else:
                 messages.error(request, "Your account was inactive.")
                 return redirect('main_app:main-admin-login')
         else:
             messages.error(request, "Invalid login details given")
             return redirect('main_app:main-admin-login')
-    elif request.method == 'GET':
 
+    elif request.method == 'GET':
         return render(request, 'admin_info/AdminLogin/index.html')
 
 
@@ -59,7 +61,7 @@ class NavigationView(ListView):
     queryset = Navbar.objects.all()
 
 
-class NavigationCreateView(ListView):
+class NavigationCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/navigation/create.html')
@@ -74,7 +76,7 @@ class NavigationCreateView(ListView):
             return render(request, 'admin_info/navigation/create.html', {'form': form})
 
 
-class NavigationUpdateView(UpdateView):
+class NavigationUpdateView(LoginRequiredMixin, UpdateView):
     model = Navbar
     template_name = "admin_info/navigation/update.html"
     context_object_name = 'navigation'
@@ -82,7 +84,7 @@ class NavigationUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:navigation")
 
 
-class NavigationDeleteView(DeleteView):
+class NavigationDeleteView(LoginRequiredMixin, DeleteView):
     model = Navbar
     success_url = reverse_lazy("main_app:navigation")
 
@@ -93,13 +95,13 @@ class NavigationDeleteView(DeleteView):
 """ End Navigation Part """
 
 
-class SliderView(ListView):
+class SliderView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/slider/index.html'
     context_object_name = 'slider_list'
     queryset = Slider.objects.all()
 
 
-class SliderUpdateView(UpdateView):
+class SliderUpdateView(LoginRequiredMixin, UpdateView):
     model = Slider
     template_name = "admin_info/slider/update.html"
     context_object_name = 'slider'
@@ -107,7 +109,7 @@ class SliderUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:slider")
 
 
-class SliderDeleteView(DeleteView):
+class SliderDeleteView(LoginRequiredMixin, DeleteView):
     model = Slider
     success_url = reverse_lazy("main_app:slider")
 
@@ -115,7 +117,7 @@ class SliderDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class SliderCreateView(ListView):
+class SliderCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/slider/create.html')
@@ -130,13 +132,13 @@ class SliderCreateView(ListView):
             return render(request, 'admin_info/slider/create.html', {'form': form})
 
 
-class ServiceView(ListView):
+class ServiceView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/services/index.html'
     context_object_name = 'service_list'
     queryset = Services.objects.all()
 
 
-class ServiceDeleteView(DeleteView):
+class ServiceDeleteView(LoginRequiredMixin, DeleteView):
     model = Services
     success_url = reverse_lazy("main_app:service")
 
@@ -144,7 +146,7 @@ class ServiceDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class ServiceCreateView(ListView):
+class ServiceCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/services/create.html')
@@ -159,7 +161,7 @@ class ServiceCreateView(ListView):
             return render(request, 'admin_info/services/create.html', {'form': form})
 
 
-class ServiceUpdateView(UpdateView):
+class ServiceUpdateView(LoginRequiredMixin, UpdateView):
     model = Services
     template_name = "admin_info/services/update.html"
     context_object_name = 'service'
@@ -167,13 +169,13 @@ class ServiceUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:service")
 
 
-class AnonsBarView(ListView):
+class AnonsBarView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/anonsbar/index.html'
     context_object_name = 'anons_list'
     queryset = AnonsBar.objects.all()
 
 
-class AnonsBarCreateView(ListView):
+class AnonsBarCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/anonsbar/create.html')
@@ -187,7 +189,7 @@ class AnonsBarCreateView(ListView):
             return render(request, 'admin_info/anonsbar/create.html', {'form': form})
 
 
-class AnonsBarUpdateView(UpdateView):
+class AnonsBarUpdateView(LoginRequiredMixin, UpdateView):
     model = AnonsBar
     template_name = "admin_info/anonsbar/update.html"
     context_object_name = 'anonsbar'
@@ -195,7 +197,7 @@ class AnonsBarUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:anons_bar")
 
 
-class AnonsBarDeleteView(DeleteView):
+class AnonsBarDeleteView(LoginRequiredMixin, DeleteView):
     model = AnonsBar
     success_url = reverse_lazy("main_app:anons_bar")
 
@@ -203,13 +205,13 @@ class AnonsBarDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class SectionView(ListView):
+class SectionView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/section/index.html'
     context_object_name = 'section_list'
     queryset = Section.objects.all()
 
 
-class SectionCreateView(ListView):
+class SectionCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/section/create.html')
@@ -223,7 +225,7 @@ class SectionCreateView(ListView):
             return render(request, 'admin_info/section/create.html', {'form': form})
 
 
-class SectionDeleteView(DeleteView):
+class SectionDeleteView(LoginRequiredMixin, DeleteView):
     model = Section
     success_url = reverse_lazy("main_app:section")
 
@@ -231,7 +233,7 @@ class SectionDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class SectionUpdateView(UpdateView):
+class SectionUpdateView(LoginRequiredMixin, UpdateView):
     model = Section
     template_name = "admin_info/section/update.html"
     context_object_name = 'section'
@@ -239,13 +241,13 @@ class SectionUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:section")
 
 
-class CarrierView(ListView):
+class CarrierView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/carriers/index.html'
     context_object_name = 'carriers'
     queryset = Carriers.objects.all()
 
 
-class CarrierCreateView(ListView):
+class CarrierCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/carriers/create.html')
@@ -259,7 +261,7 @@ class CarrierCreateView(ListView):
             return render(request, 'admin_info/carriers/create.html', {'form': form})
 
 
-class CarrierUpdateView(UpdateView):
+class CarrierUpdateView(LoginRequiredMixin, UpdateView):
     model = Carriers
     template_name = "admin_info/carriers/update.html"
     context_object_name = 'carrier'
@@ -267,7 +269,7 @@ class CarrierUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:carriers")
 
 
-class CarrierDeleteView(DeleteView):
+class CarrierDeleteView(LoginRequiredMixin, DeleteView):
     model = Carriers
     success_url = reverse_lazy("main_app:carriers")
 
@@ -275,13 +277,13 @@ class CarrierDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class CarriersAppView(ListView):
+class CarriersAppView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/carriers_application/index.html'
     context_object_name = 'carriers_app'
     queryset = CarriesApplication.objects.all()
 
 
-class CarrierAppCreateView(ListView):
+class CarrierAppCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/carriers_application/create.html')
@@ -295,7 +297,7 @@ class CarrierAppCreateView(ListView):
             return render(request, 'admin_info/carriers_application/create.html', {'form': form})
 
 
-class CarrierAppUpdateView(UpdateView):
+class CarrierAppUpdateView(LoginRequiredMixin, UpdateView):
     model = CarriesApplication
     template_name = "admin_info/carriers_application/update.html"
     context_object_name = 'carrier_app'
@@ -303,7 +305,7 @@ class CarrierAppUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:carriers_app")
 
 
-class CarrierAppDeleteView(DeleteView):
+class CarrierAppDeleteView(LoginRequiredMixin, DeleteView):
     model = CarriesApplication
     success_url = reverse_lazy("main_app:carriers_app")
 
@@ -311,13 +313,13 @@ class CarrierAppDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class TruckloadTypeView(ListView):
+class TruckloadTypeView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/truckload_type/index.html'
     context_object_name = 'truckload_types'
     queryset = TruckloadType.objects.all()
 
 
-class TruckloadTypeCreateView(ListView):
+class TruckloadTypeCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/truckload_type/create.html')
@@ -331,7 +333,7 @@ class TruckloadTypeCreateView(ListView):
             return render(request, 'admin_info/truckload_type/create.html', {'form': form})
 
 
-class TruckloadTypeUpdateView(UpdateView):
+class TruckloadTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = TruckloadType
     template_name = "admin_info/truckload_type/update.html"
     context_object_name = 'truckload_type'
@@ -339,7 +341,7 @@ class TruckloadTypeUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:truckload_type")
 
 
-class TruckloadTypeDeleteView(DeleteView):
+class TruckloadTypeDeleteView(LoginRequiredMixin, DeleteView):
     model = TruckloadType
     success_url = reverse_lazy("main_app:truckload_type")
 
@@ -347,13 +349,13 @@ class TruckloadTypeDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class TruckTypeView(ListView):
+class TruckTypeView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/truck_type/index.html'
     context_object_name = 'truckload_types'
     queryset = TruckType.objects.all()
 
 
-class TruckTypeCreateView(ListView):
+class TruckTypeCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/truck_type/create.html')
@@ -367,7 +369,7 @@ class TruckTypeCreateView(ListView):
             return render(request, 'admin_info/truck_type/create.html', {'form': form})
 
 
-class TruckTypeUpdateView(UpdateView):
+class TruckTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = TruckType
     template_name = "admin_info/truck_type/update.html"
     context_object_name = 'truck_type'
@@ -375,7 +377,7 @@ class TruckTypeUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:truck_type")
 
 
-class TruckTypeDeleteView(DeleteView):
+class TruckTypeDeleteView(LoginRequiredMixin, DeleteView):
     model = TruckType
     success_url = reverse_lazy("main_app:truck_type")
 
@@ -383,13 +385,13 @@ class TruckTypeDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class CargoTypeView(ListView):
+class CargoTypeView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/cargo_type/index.html'
     context_object_name = 'cargo_types'
     queryset = CargoType.objects.all()
 
 
-class CargoTypeCreateView(ListView):
+class CargoTypeCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/cargo_type/create.html')
@@ -403,7 +405,7 @@ class CargoTypeCreateView(ListView):
             return render(request, 'admin_info/cargo_type/create.html', {'form': form})
 
 
-class CargoTypeUpdateView(UpdateView):
+class CargoTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = CargoType
     template_name = "admin_info/cargo_type/update.html"
     context_object_name = 'cargo_type'
@@ -411,7 +413,7 @@ class CargoTypeUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:cargo_type")
 
 
-class CargoTypeDeleteView(DeleteView):
+class CargoTypeDeleteView(LoginRequiredMixin, DeleteView):
     model = CargoType
     success_url = reverse_lazy("main_app:cargo_type")
 
@@ -419,13 +421,13 @@ class CargoTypeDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class CargoWeightView(ListView):
+class CargoWeightView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/cargo_weight/index.html'
     context_object_name = 'cargo_weights'
     queryset = CargoWeight.objects.all()
 
 
-class CargoWeightCreateView(ListView):
+class CargoWeightCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/cargo_weight/create.html')
@@ -439,7 +441,7 @@ class CargoWeightCreateView(ListView):
             return render(request, 'admin_info/cargo_weight/create.html', {'form': form})
 
 
-class CargoWeightUpdateView(UpdateView):
+class CargoWeightUpdateView(LoginRequiredMixin, UpdateView):
     model = CargoWeight
     template_name = "admin_info/cargo_weight/update.html"
     context_object_name = 'cargo_weight'
@@ -447,7 +449,7 @@ class CargoWeightUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:cargo_weight")
 
 
-class CargoWeightDeleteView(DeleteView):
+class CargoWeightDeleteView(LoginRequiredMixin, DeleteView):
     model = CargoWeight
     success_url = reverse_lazy("main_app:cargo_weight")
 
@@ -455,7 +457,7 @@ class CargoWeightDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class ShipperFormDeleteView(DeleteView):
+class ShipperFormDeleteView(LoginRequiredMixin, DeleteView):
     model = ShippersForm
     success_url = reverse_lazy("main_app:shipper_form")
 
@@ -463,13 +465,13 @@ class ShipperFormDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class ShipperFormView(ListView):
+class ShipperFormView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/shipper_form/index.html'
     context_object_name = 'shipper_form'
     queryset = ShippersForm.objects.all()
 
 
-class ShipperFormUpdateView(UpdateView):
+class ShipperFormUpdateView(LoginRequiredMixin, UpdateView):
     model = ShippersForm
     template_name = "admin_info/shipper_form/update.html"
     context_object_name = 'shipper_form'
@@ -503,13 +505,13 @@ class ShipperFormUpdateView(UpdateView):
     #     return super(ShipperFormUpdateView, self).form_valid(form)
 
 
-class AboutUsView(ListView):
+class AboutUsView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/about_us/index.html'
     context_object_name = 'abouts'
     queryset = AboutUs.objects.all()
 
 
-class AboutUsCreateView(ListView):
+class AboutUsCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/about_us/create.html')
@@ -523,7 +525,7 @@ class AboutUsCreateView(ListView):
             return render(request, 'admin_info/about_us/create.html', {'form': form})
 
 
-class AboutUsUpdateView(UpdateView):
+class AboutUsUpdateView(LoginRequiredMixin, UpdateView):
     model = AboutUs
     template_name = "admin_info/about_us/update.html"
     context_object_name = 'about'
@@ -531,7 +533,7 @@ class AboutUsUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:about_us")
 
 
-class AboutUsDeleteView(DeleteView):
+class AboutUsDeleteView(LoginRequiredMixin, DeleteView):
     model = AboutUs
     success_url = reverse_lazy("main_app:about_us")
 
@@ -539,13 +541,13 @@ class AboutUsDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class StatisticsView(ListView):
+class StatisticsView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/statistics/index.html'
     context_object_name = 'statistics'
     queryset = Statistics.objects.all()
 
 
-class StatisticsCreateView(ListView):
+class StatisticsCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/statistics/create.html')
@@ -559,7 +561,7 @@ class StatisticsCreateView(ListView):
             return render(request, 'admin_info/statistics/create.html', {'form': form})
 
 
-class StatisticsUpdateView(UpdateView):
+class StatisticsUpdateView(LoginRequiredMixin, UpdateView):
     model = Statistics
     template_name = "admin_info/statistics/update.html"
     context_object_name = 'statistics'
@@ -567,7 +569,7 @@ class StatisticsUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:statistics")
 
 
-class StatisticsDeleteView(DeleteView):
+class StatisticsDeleteView(LoginRequiredMixin, DeleteView):
     model = Statistics
     success_url = reverse_lazy("main_app:statistics")
 
@@ -575,13 +577,13 @@ class StatisticsDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class AboutUsSectionView(ListView):
+class AboutUsSectionView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/about_us_section/index.html'
     context_object_name = 'abouts'
     queryset = AboutUsSection.objects.all()
 
 
-class AboutUsSectionCreateView(ListView):
+class AboutUsSectionCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/about_us_section/create.html')
@@ -595,7 +597,7 @@ class AboutUsSectionCreateView(ListView):
             return render(request, 'admin_info/about_us_section/create.html', {'form': form})
 
 
-class AboutUsSectionUpdateView(UpdateView):
+class AboutUsSectionUpdateView(LoginRequiredMixin, UpdateView):
     model = AboutUsSection
     template_name = "admin_info/about_us_section/update.html"
     context_object_name = 'about'
@@ -603,7 +605,7 @@ class AboutUsSectionUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:about_section")
 
 
-class AboutUsSectionDeleteView(DeleteView):
+class AboutUsSectionDeleteView(LoginRequiredMixin, DeleteView):
     model = AboutUsSection
     success_url = reverse_lazy("main_app:about_section")
 
@@ -611,13 +613,13 @@ class AboutUsSectionDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class TeamView(ListView):
+class TeamView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/team/index.html'
     context_object_name = 'team'
     queryset = Team.objects.all()
 
 
-class TeamCreateView(ListView):
+class TeamCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/team/create.html')
@@ -631,7 +633,7 @@ class TeamCreateView(ListView):
             return render(request, 'admin_info/team/create.html', {'form': form})
 
 
-class TeamUpdateView(UpdateView):
+class TeamUpdateView(LoginRequiredMixin, UpdateView):
     model = Team
     template_name = "admin_info/team/update.html"
     context_object_name = 'member'
@@ -639,7 +641,7 @@ class TeamUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:team")
 
 
-class TeamDeleteView(DeleteView):
+class TeamDeleteView(LoginRequiredMixin, DeleteView):
     model = Team
     success_url = reverse_lazy("main_app:team")
 
@@ -647,13 +649,13 @@ class TeamDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class InsightView(ListView):
+class InsightView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/insights/index.html'
     context_object_name = 'insight'
     queryset = Insights.objects.all()
 
 
-class InsightCreateView(ListView):
+class InsightCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/insights/create.html')
@@ -667,7 +669,7 @@ class InsightCreateView(ListView):
             return render(request, 'admin_info/insights/create.html', {'form': form})
 
 
-class InsightUpdateView(UpdateView):
+class InsightUpdateView(LoginRequiredMixin, UpdateView):
     model = Insights
     template_name = "admin_info/insights/update.html"
     context_object_name = 'about'
@@ -675,7 +677,7 @@ class InsightUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:insight")
 
 
-class InsightDeleteView(DeleteView):
+class InsightDeleteView(LoginRequiredMixin, DeleteView):
     model = Insights
     success_url = reverse_lazy("main_app:insight")
 
@@ -683,13 +685,13 @@ class InsightDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class CareerView(ListView):
+class CareerView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/careers/index.html'
     context_object_name = 'careers'
     queryset = Careers.objects.all()
 
 
-class CareerCreateView(ListView):
+class CareerCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/careers/create.html')
@@ -703,7 +705,7 @@ class CareerCreateView(ListView):
             return render(request, 'admin_info/careers/create.html', {'form': form})
 
 
-class CareerUpdateView(UpdateView):
+class CareerUpdateView(LoginRequiredMixin, UpdateView):
     model = Careers
     template_name = "admin_info/careers/update.html"
     context_object_name = 'career'
@@ -711,7 +713,7 @@ class CareerUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:career")
 
 
-class CareerDeleteView(DeleteView):
+class CareerDeleteView(LoginRequiredMixin, DeleteView):
     model = Careers
     success_url = reverse_lazy("main_app:career")
 
@@ -719,7 +721,7 @@ class CareerDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class PaymentTypeCreateView(ListView):
+class PaymentTypeCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/payment_type/create.html')
@@ -733,13 +735,13 @@ class PaymentTypeCreateView(ListView):
             return render(request, 'admin_info/payment_type/create.html', {'form': form})
 
 
-class PaymentTypeView(ListView):
+class PaymentTypeView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/payment_type/index.html'
     context_object_name = 'cargo_weights'
     queryset = PaymentType.objects.all()
 
 
-class PaymentTypeUpdateView(UpdateView):
+class PaymentTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = PaymentType
     template_name = "admin_info/payment_type/update.html"
     context_object_name = 'payment_type'
@@ -747,7 +749,7 @@ class PaymentTypeUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:payment_type")
 
 
-class PaymentTypeDeleteView(DeleteView):
+class PaymentTypeDeleteView(LoginRequiredMixin, DeleteView):
     model = PaymentType
     success_url = reverse_lazy("main_app:payment_type")
 
@@ -755,13 +757,13 @@ class PaymentTypeDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class WorkTypeView(ListView):
+class WorkTypeView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/work_type/index.html'
     context_object_name = 'work_types'
     queryset = WorkType.objects.all()
 
 
-class ShipperFormCreateView(ListView):
+class ShipperFormCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         truckload_types = TruckloadType.objects.all()
@@ -787,7 +789,7 @@ class ShipperFormCreateView(ListView):
                            'f3': cargo_types, 'f4': cargo_weight})
 
 
-class VacancyCreateView(ListView):
+class VacancyCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         work_type = WorkType.objects.all()
@@ -806,7 +808,7 @@ class VacancyCreateView(ListView):
                           {'form': form, 'f1': work_type, 'f2': payment_type})
 
 
-class WorkTypeCreateView(ListView):
+class WorkTypeCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         work_type = WorkType.objects.all()
@@ -825,7 +827,7 @@ class WorkTypeCreateView(ListView):
                           {'form': form, 'f1': work_type, 'f2': payment_type})
 
 
-class WorkTypeUpdateView(UpdateView):
+class WorkTypeUpdateView(LoginRequiredMixin, UpdateView):
     model = WorkType
     template_name = "admin_info/work_type/update.html"
     context_object_name = 'work_type'
@@ -833,7 +835,7 @@ class WorkTypeUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:work_type")
 
 
-class WorkTypeDeleteView(DeleteView):
+class WorkTypeDeleteView(LoginRequiredMixin, DeleteView):
     model = WorkType
     success_url = reverse_lazy("main_app:work_type")
 
@@ -841,19 +843,19 @@ class WorkTypeDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class VacancyView(ListView):
+class VacancyView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/vacancies/index.html'
     context_object_name = 'vacancies'
     queryset = Vacancies.objects.all()
 
 
-class ContactUsView(ListView):
+class ContactUsView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/contact/index.html'
     context_object_name = 'contacts'
     queryset = ContactUs.objects.all()
 
 
-class ContactUsUpdateView(UpdateView):
+class ContactUsUpdateView(LoginRequiredMixin, UpdateView):
     model = ContactUs
     template_name = "admin_info/contact/update.html"
     context_object_name = 'contact'
@@ -861,7 +863,7 @@ class ContactUsUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:contact")
 
 
-class ContactUsDeleteView(DeleteView):
+class ContactUsDeleteView(LoginRequiredMixin, DeleteView):
     model = ContactUs
     success_url = reverse_lazy("main_app:contact")
 
@@ -869,13 +871,13 @@ class ContactUsDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class PrivacyPolicyView(ListView):
+class PrivacyPolicyView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/privacy/index.html'
     context_object_name = 'policies'
     queryset = PrivacyPolicy.objects.all()
 
 
-class PrivacyPolicyCreateView(ListView):
+class PrivacyPolicyCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/privacy/create.html')
@@ -889,7 +891,7 @@ class PrivacyPolicyCreateView(ListView):
             return render(request, 'admin_info/privacy/create.html', {'form': form})
 
 
-class PrivacyPolicyUpdateView(UpdateView):
+class PrivacyPolicyUpdateView(LoginRequiredMixin, UpdateView):
     model = PrivacyPolicy
     template_name = "admin_info/privacy/update.html"
     context_object_name = 'privacy'
@@ -897,7 +899,7 @@ class PrivacyPolicyUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:privacy")
 
 
-class PrivacyPolicyDeleteView(DeleteView):
+class PrivacyPolicyDeleteView(LoginRequiredMixin, DeleteView):
     model = PrivacyPolicy
     success_url = reverse_lazy("main_app:privacy")
 
@@ -905,13 +907,13 @@ class PrivacyPolicyDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class FAQView(ListView):
+class FAQView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/faq/index.html'
     context_object_name = 'faqs'
     queryset = FAQ.objects.all()
 
 
-class FAQCreateView(ListView):
+class FAQCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'admin_info/faq/create.html')
@@ -925,7 +927,7 @@ class FAQCreateView(ListView):
             return render(request, 'admin_info/faq/create.html', {'form': form})
 
 
-class FAQUpdateView(UpdateView):
+class FAQUpdateView(LoginRequiredMixin, UpdateView):
     model = FAQ
     template_name = "admin_info/faq/update.html"
     context_object_name = 'faq'
@@ -933,7 +935,7 @@ class FAQUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:faq")
 
 
-class FAQDeleteView(DeleteView):
+class FAQDeleteView(LoginRequiredMixin, DeleteView):
     model = FAQ
     success_url = reverse_lazy("main_app:faq")
 
@@ -941,13 +943,13 @@ class FAQDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class FooterView(ListView):
+class FooterView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/footer/index.html'
     context_object_name = 'footers'
     queryset = Footer.objects.all()
 
 
-class FooterUpdateView(UpdateView):
+class FooterUpdateView(LoginRequiredMixin, UpdateView):
     model = Footer
     template_name = "admin_info/footer/update.html"
     context_object_name = 'footer'
@@ -955,7 +957,7 @@ class FooterUpdateView(UpdateView):
     success_url = reverse_lazy("main_app:footer")
 
 
-class FooterDeleteView(DeleteView):
+class FooterDeleteView(LoginRequiredMixin, DeleteView):
     model = Footer
     success_url = reverse_lazy("main_app:footer")
 
@@ -963,7 +965,7 @@ class FooterDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class VacancyUpdateView(UpdateView):
+class VacancyUpdateView(LoginRequiredMixin, UpdateView):
     model = Vacancies
     template_name = "admin_info/vacancies/update.html"
     context_object_name = 'vacancies'
@@ -980,7 +982,7 @@ class VacancyUpdateView(UpdateView):
         return context
 
 
-class VacancyDeleteView(DeleteView):
+class VacancyDeleteView(LoginRequiredMixin, DeleteView):
     model = Vacancies
     success_url = reverse_lazy("main_app:vacancy")
 
@@ -994,7 +996,7 @@ class RequestQuoteView(ListView):
     queryset = RequestQuote.objects.all()
 
 
-class RequestQuoteCreateView(ListView):
+class RequestQuoteCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         truckload_types = TruckloadType.objects.all()
@@ -1015,7 +1017,7 @@ class RequestQuoteCreateView(ListView):
                           {'form': form, 'f1': truckload_types, 'f2': truck_types})
 
 
-class RequestQuoteUpdateView(UpdateView):
+class RequestQuoteUpdateView(LoginRequiredMixin, UpdateView):
     model = RequestQuote
     template_name = "admin_info/quote/update.html"
     context_object_name = 'quote'
@@ -1045,7 +1047,7 @@ class RequestQuoteUpdateView(UpdateView):
     #     return super(ShipperFormUpdateView, self).form_valid(form)
 
 
-class RequestQuoteDeleteView(DeleteView):
+class RequestQuoteDeleteView(LoginRequiredMixin, DeleteView):
     model = RequestQuote
     success_url = reverse_lazy("main_app:quote")
 
@@ -1053,13 +1055,13 @@ class RequestQuoteDeleteView(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class CarriersFormView(ListView):
+class CarriersFormView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/carriers_form/index.html'
     context_object_name = 'carriers_form'
     queryset = CarriersForm.objects.all()
 
 
-class CarriersFormCreateView(ListView):
+class CarriersFormCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         truckload_types = TruckloadType.objects.all()
@@ -1080,7 +1082,7 @@ class CarriersFormCreateView(ListView):
                           {'form': form, 'f1': truckload_types, 'f2': truck_types})
 
 
-class CarriersFormUpdateView(UpdateView):
+class CarriersFormUpdateView(LoginRequiredMixin, UpdateView):
     model = CarriersForm
     template_name = "admin_info/carriers_form/update.html"
     context_object_name = 'carriers_form'
@@ -1110,7 +1112,7 @@ class CarriersFormUpdateView(UpdateView):
     #     return super(ShipperFormUpdateView, self).form_valid(form)
 
 
-class CarriersFormDeleteView(DeleteView):
+class CarriersFormDeleteView(LoginRequiredMixin, DeleteView):
     model = CarriersForm
     success_url = reverse_lazy("main_app:carriers_form")
 
