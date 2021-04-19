@@ -248,10 +248,9 @@
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="text"
                                                                                class="form-control"
-                                                                               v-model="url_uz"
+                                                                               v-model="url_uz" pattern="^[\S]+$"
                                                                                name="url"
-                                                                               value="
-                                                                                       {% if vacancies.url %}{{ vacancies.url }}{% endif %}"
+                                                                               value="{% if vacancies.url %}{{ vacancies.url }}{% endif %}"
                                                                                placeholder="Add URL">
                                                                     </fieldset>
                                                                 </div>

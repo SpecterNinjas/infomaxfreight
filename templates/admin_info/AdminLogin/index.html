@@ -64,6 +64,7 @@
                 </div>
 
                 <script src='https://www.google.com/recaptcha/api.js'></script>
+
                 <div
                         class="g-recaptcha"
                         data-callback="gCBS"
@@ -111,7 +112,6 @@
         scale: 1.1
     });
 
-    console.log($('#recaptcha-anchor'))
 
     var gCS = false
     function gCBS() { gCS = true; $('#captchaerror').empty() }
@@ -132,7 +132,5 @@
 </script>
 <!--===============================================================================================-->
 <script src="{% static 'login/js/main.js' %}"></script>
-
-
 </body>
 </html>

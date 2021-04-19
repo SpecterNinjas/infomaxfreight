@@ -171,7 +171,7 @@
                                         <fieldset class="invoice-address form-group">
                                             <input type="text"
                                                    class="form-control"
-                                                   v-model="url"
+                                                   v-model="url" pattern="^[\S]+$"
                                                    name="url"
                                                    value="{% if slider.url %}{{ slider.url }}{% endif %}"
                                                    placeholder="Add Url">

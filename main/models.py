@@ -5,7 +5,7 @@ from datetime import date
 class Navbar(models.Model):
     title = models.CharField(max_length=32)
     order = models.IntegerField()
-    url = models.SlugField(blank=True, null=True)
+    url = models.CharField(blank=True, null=True, max_length=300)
 
     class Meta:
         verbose_name = 'Navbar'
@@ -17,7 +17,7 @@ class Slider(models.Model):
     description = models.TextField("Description", max_length=1024)
     image = models.FileField("Image", upload_to='main/slider/')
     draft = models.BooleanField("Draft", default=True)
-    url = models.SlugField("Url", blank=True, null=True, max_length=500)
+    url = models.CharField("Url", blank=True, null=True, max_length=300)
 
     def __str__(self):
         return self.title
@@ -31,7 +31,7 @@ class Services(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField(max_length=3000)
     icon = models.FileField(upload_to='main/services/')
-    url = models.SlugField(blank=True, null=True)
+    url = models.CharField(blank=True, null=True,max_length=300)
 
     def __str__(self):
         return self.title
@@ -45,7 +45,7 @@ class AnonsBar(models.Model):
     description = models.TextField(max_length=2048)
     image = models.FileField(upload_to='main/anons_bar/')
     is_active = models.BooleanField(default=True)
-    url = models.SlugField(blank=True, null=True)
+    url = models.CharField(blank=True, null=True,max_length=300)
 
     class Meta:
         verbose_name = 'Anons Bar'
@@ -82,7 +82,7 @@ class Carriers(models.Model):
 class CarriesApplication(models.Model):
     description = models.TextField(max_length=3000)
     image = models.FileField(upload_to='main/subcarriers/')
-    url = models.SlugField(blank=True, null=True)
+    url = models.CharField(blank=True, null=True,max_length=300)
 
     class Meta:
         verbose_name = 'SubCarrier'
@@ -256,7 +256,7 @@ class Vacancies(models.Model):
     image = models.FileField(upload_to='main/vacancies/', default='main/vacancies/default.png')
     payment_type = models.ForeignKey(PaymentType, on_delete=True)
     quantity = models.FloatField(default=0.0)
-    url = models.SlugField(null=True, blank=True)
+    url = models.CharField(null=True, blank=True, max_length=300)
     work_type = models.ForeignKey(WorkType, on_delete=True)
     work_hour = models.IntegerField()
     email = models.EmailField()
