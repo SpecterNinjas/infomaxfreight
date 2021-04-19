@@ -3,6 +3,8 @@ from django.shortcuts import render
 from rest_framework import filters
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+
 from .models import *
 from .serializers import *
 
@@ -71,6 +73,10 @@ class CarriesApplicationListView(ListAPIView):
     queryset = CarriesApplication.objects.all()
     serializer_class = CarriesApplicationSerializer
 
+    def get(self, request, *args, **kwargs):
+        instance = self.get_queryset().first()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data, status=200)
 
 class AboutUsListView(ListAPIView):
     queryset = AboutUs.objects.all()

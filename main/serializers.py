@@ -75,6 +75,10 @@ class CarriersSerializer(serializers.ModelSerializer):
 
 
 class CarriesApplicationSerializer(serializers.ModelSerializer):
+    def __init__(self, *args, **kwargs):
+        many = kwargs.pop('many', False)
+        super(CarriesApplicationSerializer, self).__init__(many=many, *args, **kwargs)
+
     class Meta:
         model = CarriesApplication
         fields = '__all__'
