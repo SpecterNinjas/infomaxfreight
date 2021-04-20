@@ -21,7 +21,7 @@ from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('api/v1/', include('main.urls')),
     path('main_admin/', include('main_admin.urls'))
 

@@ -5,13 +5,13 @@ from .models import *
 class TruckTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TruckType
-        fields = ['title', 'is_available']
+        fields = ['pk', 'title', 'is_available']
 
 
 class TruckLoadTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TruckloadType
-        fields = ['title', 'is_available']
+        fields = ['pk', 'title', 'is_available']
 
 
 class CargoTypeSerializer(serializers.ModelSerializer):

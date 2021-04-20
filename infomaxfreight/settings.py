@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -62,7 +63,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',  # Swagger Installion
     'corsheaders',  # To avoid Cors Error
+    'ckeditor',
+
 ]
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
@@ -146,8 +152,6 @@ USE_TZ = True
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfWIbAaAAAAACnxfbAlTP21Ks11PPyCEwL91n9F'
 
-from django.contrib.messages import constants as messages
-
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -168,3 +172,4 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 MEDIA_ROOT = MEDIA_DIR
+

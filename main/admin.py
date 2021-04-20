@@ -1,5 +1,55 @@
 from django.contrib import admin
+from django import forms
 from .models import *
+from ckeditor.widgets import CKEditorWidget
+
+
+class CarriersAdminCKEditorForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Carriers
+        fields = '__all__'
+
+
+class AboutUsAdminCKEditorForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = AboutUs
+        fields = '__all__'
+
+
+class AboutUsSectionAdminCKEditorForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = AboutUsSection
+        fields = '__all__'
+
+
+class VacanciesAdminCKEditorForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Vacancies
+        fields = '__all__'
+
+
+class CareersAdminCKEditorForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Careers
+        fields = '__all__'
+
+
+class InsightsAdminCKEditorForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Insights
+        fields = '__all__'
 
 
 @admin.register(Navbar)
@@ -29,12 +79,13 @@ class SectionAdmin(admin.ModelAdmin):
 
 @admin.register(Carriers)
 class CarriersAdmin(admin.ModelAdmin):
+    form = CarriersAdminCKEditorForm
     list_display = ['title', 'image']
 
 
 @admin.register(CarriesApplication)
 class CarriesApplication(admin.ModelAdmin):
-    list_display = ['description','image', 'url']
+    list_display = ['description', 'image', 'url']
 
 
 @admin.register(TruckloadType)
@@ -71,6 +122,7 @@ class ShippersFormAdmin(admin.ModelAdmin):
 
 @admin.register(AboutUs)
 class AboutUsAdmin(admin.ModelAdmin):
+    form = AboutUsAdminCKEditorForm
     list_display = ['title', 'image']
 
 
@@ -81,6 +133,7 @@ class StatisticsAdmin(admin.ModelAdmin):
 
 @admin.register(AboutUsSection)
 class AboutUsSectionAdmin(admin.ModelAdmin):
+    form = AboutUsSectionAdminCKEditorForm
     list_display = ['title', 'image']
 
 
@@ -91,11 +144,13 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(Insights)
 class InsightsAdmin(admin.ModelAdmin):
+    form = InsightsAdminCKEditorForm
     list_display = ['title', 'image']
 
 
 @admin.register(Careers)
 class CareersAdmin(admin.ModelAdmin):
+    form = CareersAdminCKEditorForm
     list_display = ['title', ]
 
 
@@ -111,6 +166,7 @@ class WorkTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Vacancies)
 class VacanciesAdmin(admin.ModelAdmin):
+    form = VacanciesAdminCKEditorForm
     list_display = ['job_title', 'company', 'work_type', 'payment_type', 'work_hour', 'quantity']
 
 
