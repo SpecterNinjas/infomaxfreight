@@ -17,13 +17,13 @@ class TruckLoadTypeSerializer(serializers.ModelSerializer):
 class CargoTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CargoType
-        fields = ['title', 'is_available']
+        fields = ['pk', 'title', 'is_available']
 
 
 class CargoWeightSerializer(serializers.ModelSerializer):
     class Meta:
         model = CargoWeight
-        fields = ['title', ]
+        fields = ['pk', 'title', ]
 
 
 class PaymentTypeSerializer(serializers.ModelSerializer):

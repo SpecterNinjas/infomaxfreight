@@ -17,6 +17,8 @@ my_env/
 # <django-project-name>/staticfiles/
 
 staticfiles/
+static_root/
+static_root
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
