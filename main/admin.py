@@ -52,6 +52,22 @@ class InsightsAdminCKEditorForm(forms.ModelForm):
         fields = '__all__'
 
 
+class FAQAdminCKEditorForm(forms.ModelForm):
+    answer = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = Insights
+        fields = '__all__'
+
+
+class PrivacyPolicyAdminCKEditorForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorWidget())
+
+    class Meta:
+        model = PrivacyPolicy
+        fields = '__all__'
+
+
 @admin.register(Navbar)
 class NavbarAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'url']
@@ -181,11 +197,17 @@ class RequestQuoteAdmin(admin.ModelAdmin):
                     'to_city']
 
 
-admin.site.register(PrivacyPolicy)
+# admin.site.register(PrivacyPolicy)
+
+@admin.register(PrivacyPolicy)
+class PrivacyPolicyAdmin(admin.ModelAdmin):
+    form = PrivacyPolicyAdminCKEditorForm
+    list_display = ['pk', 'created', 'updated']
 
 
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):
+    form = FAQAdminCKEditorForm
     list_display = ['question', 'created', 'updated', 'draft']
 
 
