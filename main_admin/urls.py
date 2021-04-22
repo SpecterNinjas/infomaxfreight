@@ -90,6 +90,7 @@ urlpatterns = [
     path("about_us/<int:pk>/", views.AboutUsUpdateView.as_view(), name="about_us_update"),
     path("about_us_delete/<int:pk>/", views.AboutUsDeleteView.as_view(), name="about_us_delete"),
 
+
     # Statistics
     path("statistics/", views.StatisticsView.as_view(), name="statistics"),
     path("statistics_create/", views.StatisticsCreateView.as_view(), name="statistics_create"),

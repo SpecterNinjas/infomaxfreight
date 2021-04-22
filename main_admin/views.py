@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from main.models import *
 from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -55,7 +55,7 @@ class MainView(LoginRequiredMixin, ListView):
 """ Navigation Part """
 
 
-class NavigationView(ListView):
+class NavigationView(LoginRequiredMixin, ListView):
     template_name = 'admin_info/navigation/index.html'
     context_object_name = 'navigation_list'
     queryset = Navbar.objects.all()
@@ -247,18 +247,25 @@ class CarrierView(LoginRequiredMixin, ListView):
     queryset = Carriers.objects.all()
 
 
-class CarrierCreateView(LoginRequiredMixin, ListView):
+# class CarrierCreateView(LoginRequiredMixin, ListView):
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'admin_info/carriers/create.html')
+#
+#     def post(self, request):
+#         form = CarrierForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:carriers')
+#         else:
+#             return render(request, 'admin_info/carriers/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/carriers/create.html')
-
-    def post(self, request):
-        form = CarrierForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:carriers')
-        else:
-            return render(request, 'admin_info/carriers/create.html', {'form': form})
+class CarrierCreateView(LoginRequiredMixin, CreateView):
+    model = Carriers
+    form_class = CarrierForm
+    context_object_name = 'carr'
+    template_name = 'admin_info/carriers/create.html'
+    success_url = reverse_lazy("main_app:carriers")
 
 
 class CarrierUpdateView(LoginRequiredMixin, UpdateView):
@@ -511,18 +518,27 @@ class AboutUsView(LoginRequiredMixin, ListView):
     queryset = AboutUs.objects.all()
 
 
-class AboutUsCreateView(LoginRequiredMixin, ListView):
+# class AboutUsCreateView(LoginRequiredMixin, ListView):
+#     model = AboutUs
+#
+#     def get(self, request, *args, **kwargs):
+#         form = AboutUsForm()
+#         return render(request, 'admin_info/about_us/create.html' , {"form" : form})
+#
+#     def post(self, request):
+#         form = AboutUsForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:about_us')
+#         else:
+#             return render(request, 'admin_info/about_us/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/about_us/create.html')
-
-    def post(self, request):
-        form = AboutUsForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:about_us')
-        else:
-            return render(request, 'admin_info/about_us/create.html', {'form': form})
+class AboutUsCreateView(LoginRequiredMixin, CreateView):
+    model = AboutUs
+    form_class = AboutUsForm
+    template_name = "admin_info/about_us/create.html"
+    context_object_name = 'about'
+    success_url = reverse_lazy("main_app:about_us")
 
 
 class AboutUsUpdateView(LoginRequiredMixin, UpdateView):
@@ -583,18 +599,24 @@ class AboutUsSectionView(LoginRequiredMixin, ListView):
     queryset = AboutUsSection.objects.all()
 
 
-class AboutUsSectionCreateView(LoginRequiredMixin, ListView):
+# class AboutUsSectionCreateView(LoginRequiredMixin, ListView):
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'admin_info/about_us_section/create.html')
+#
+#     def post(self, request):
+#         form = AboutUsSectionForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:about_section')
+#         else:
+#             return render(request, 'admin_info/about_us_section/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/about_us_section/create.html')
-
-    def post(self, request):
-        form = AboutUsSectionForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:about_section')
-        else:
-            return render(request, 'admin_info/about_us_section/create.html', {'form': form})
+class AboutUsSectionCreateView(LoginRequiredMixin, CreateView):
+    model = AboutUsSection
+    form_class = AboutUsSectionForm
+    template_name = "admin_info/about_us_section/create.html"
+    success_url = reverse_lazy("main_app:about_section")
 
 
 class AboutUsSectionUpdateView(LoginRequiredMixin, UpdateView):
@@ -655,19 +677,24 @@ class InsightView(LoginRequiredMixin, ListView):
     queryset = Insights.objects.all()
 
 
-class InsightCreateView(LoginRequiredMixin, ListView):
+# class InsightCreateView(LoginRequiredMixin, ListView):
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'admin_info/insights/create.html')
+#
+#     def post(self, request):
+#         form = InsightForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:insight')
+#         else:
+#             return render(request, 'admin_info/insights/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/insights/create.html')
-
-    def post(self, request):
-        form = InsightForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:insight')
-        else:
-            return render(request, 'admin_info/insights/create.html', {'form': form})
-
+class InsightCreateView(LoginRequiredMixin, CreateView):
+    model = Insights
+    form_class = InsightForm
+    template_name = 'admin_info/insights/create.html'
+    success_url = reverse_lazy("main_app:insight")
 
 class InsightUpdateView(LoginRequiredMixin, UpdateView):
     model = Insights
@@ -691,18 +718,24 @@ class CareerView(LoginRequiredMixin, ListView):
     queryset = Careers.objects.all()
 
 
-class CareerCreateView(LoginRequiredMixin, ListView):
+# class CareerCreateView(LoginRequiredMixin, ListView):
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'admin_info/careers/create.html')
+#
+#     def post(self, request):
+#         form = CareerForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:career')
+#         else:
+#             return render(request, 'admin_info/careers/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/careers/create.html')
-
-    def post(self, request):
-        form = CareerForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:career')
-        else:
-            return render(request, 'admin_info/careers/create.html', {'form': form})
+class CareerCreateView(LoginRequiredMixin,CreateView):
+    model = Careers
+    form_class = CareerForm
+    template_name = 'admin_info/careers/create.html'
+    success_url = reverse_lazy('main_app:career')
 
 
 class CareerUpdateView(LoginRequiredMixin, UpdateView):
@@ -792,13 +825,14 @@ class ShipperFormCreateView(LoginRequiredMixin, ListView):
 class VacancyCreateView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
+        form = VacancyForm()
         work_type = WorkType.objects.all()
         payment_type = PaymentType.objects.all()
-        return render(request, 'admin_info/vacancies/create.html', {'f1': work_type, 'f2': payment_type})
+        return render(request, 'admin_info/vacancies/create.html', {'form':form,'f1': work_type, 'f2': payment_type})
 
     def post(self, request):
         work_type = WorkType.objects.all()
-        payment_type = PaymentType.objects.all()
+        payment_type = PaymentType.objects.all()        
         form = VacancyForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -877,18 +911,24 @@ class PrivacyPolicyView(LoginRequiredMixin, ListView):
     queryset = PrivacyPolicy.objects.all()
 
 
-class PrivacyPolicyCreateView(LoginRequiredMixin, ListView):
+# class PrivacyPolicyCreateView(LoginRequiredMixin, ListView):
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'admin_info/privacy/create.html')
+#
+#     def post(self, request):
+#         form = PrivacyForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('main_app:privacy')
+#         else:
+#             return render(request, 'admin_info/privacy/create.html', {'form': form})
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'admin_info/privacy/create.html')
-
-    def post(self, request):
-        form = PrivacyForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('main_app:privacy')
-        else:
-            return render(request, 'admin_info/privacy/create.html', {'form': form})
+class PrivacyPolicyCreateView(LoginRequiredMixin, CreateView):
+    model = PrivacyPolicy
+    form_class = PrivacyForm
+    success_url = reverse_lazy("main_app:privacy")
+    template_name = 'admin_info/privacy/create.html'
 
 
 class PrivacyPolicyUpdateView(LoginRequiredMixin, UpdateView):

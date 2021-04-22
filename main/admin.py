@@ -1,19 +1,18 @@
 from django.contrib import admin
 from django import forms
 from .models import *
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget 
 
 
 class CarriersAdminCKEditorForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
+    description = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Carriers
         fields = '__all__'
 
-
 class AboutUsAdminCKEditorForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = AboutUs
@@ -21,7 +20,7 @@ class AboutUsAdminCKEditorForm(forms.ModelForm):
 
 
 class AboutUsSectionAdminCKEditorForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = AboutUsSection
@@ -29,7 +28,7 @@ class AboutUsSectionAdminCKEditorForm(forms.ModelForm):
 
 
 class VacanciesAdminCKEditorForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
+    description = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Vacancies
@@ -37,7 +36,7 @@ class VacanciesAdminCKEditorForm(forms.ModelForm):
 
 
 class CareersAdminCKEditorForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Careers
@@ -45,7 +44,7 @@ class CareersAdminCKEditorForm(forms.ModelForm):
 
 
 class InsightsAdminCKEditorForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Insights
@@ -53,7 +52,7 @@ class InsightsAdminCKEditorForm(forms.ModelForm):
 
 
 class FAQAdminCKEditorForm(forms.ModelForm):
-    answer = forms.CharField(widget=CKEditorWidget())
+    answer = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Insights
@@ -61,7 +60,7 @@ class FAQAdminCKEditorForm(forms.ModelForm):
 
 
 class PrivacyPolicyAdminCKEditorForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = PrivacyPolicy

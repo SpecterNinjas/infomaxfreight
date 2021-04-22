@@ -1,5 +1,7 @@
 from django import forms
 from main.models import *
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from django.contrib.auth.models import User
 
@@ -62,6 +64,7 @@ class SectionForm(forms.ModelForm):
 
 
 class CarrierForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = Carriers
         fields = (
@@ -120,12 +123,12 @@ class ShippersShowForm(forms.ModelForm):
 
 
 class AboutUsForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = AboutUs
         fields = (
             'title', 'content', 'subcontent', 'image'
         )
-
 
 class StatisticsForm(forms.ModelForm):
     class Meta:
@@ -136,6 +139,7 @@ class StatisticsForm(forms.ModelForm):
 
 
 class AboutUsSectionForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = AboutUsSection
         fields = (
@@ -152,6 +156,7 @@ class TeamForm(forms.ModelForm):
 
 
 class InsightForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = Insights
         fields = (
@@ -160,6 +165,7 @@ class InsightForm(forms.ModelForm):
 
 
 class CareerForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = Careers
         fields = (
@@ -184,6 +190,7 @@ class WorkTypeForm(forms.ModelForm):
 
 
 class VacancyForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = Vacancies
         fields = (
@@ -201,6 +208,7 @@ class ContactForm(forms.ModelForm):
 
 
 class PrivacyForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = PrivacyPolicy
         fields = (
@@ -235,6 +243,7 @@ class QuoteForm(forms.ModelForm):
 
 
 class CarrierShowForm(forms.ModelForm):
+
     class Meta:
         model = CarriersForm
         fields = (
