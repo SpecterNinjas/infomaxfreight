@@ -398,7 +398,7 @@
                                                                                class="form-control"
                                                                                v-model="twitter_uz"
                                                                                name="twitter"
-                                                                               pattern="http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)"
+                                                                               pattern="http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_.]+)"
                                                                                  value="{% if member.twitter %}{{ member.twitter }}{% endif %}"
                                                                                placeholder="Add Twitter">
                                                                     </fieldset>
@@ -478,7 +478,7 @@
                                                                                class="form-control"
                                                                                v-model="facebook_uz"
                                                                                name="facebook"
-                                                                                pattern="http(?:s)?:\/\/(?:www\.)?facebook\.com\/([a-zA-Z0-9_]+)"
+                                                                                pattern="http(?:s)?:\/\/(?:www\.)?facebook\.com\/([a-zA-Z0-9_.]+)"
 
                                                                                  value="{% if member.facebook %}{{ member.facebook }}{% endif %}"
                                                                                placeholder="Add Facebook">
@@ -559,7 +559,7 @@
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="text"
                                                                                class="form-control"
-                                                                                pattern="http(?:s)?:\/\/(?:www\.)?t\.me\/([a-zA-Z0-9_]+)"
+                                                                                pattern="http(?:s)?:\/\/(?:www\.)?t\.me\/([a-zA-Z0-9_.]+)"
                                                                                v-model="telegram_uz"
                                                                                name="telegram"
                                                                                  value="{% if member.telegram %}{{ member.telegram }}{% endif %}"
@@ -638,7 +638,7 @@
                                                                 <div class="col-lg-12 col-md-12">
                                                                     <fieldset class="invoice-address form-group">
                                                                         <input type="text"
-                                                                                pattern="http(?:s)?:\/\/(?:www\.)?instagram\.com\/([a-zA-Z0-9_]+)"
+                                                                                pattern="http(?:s)?:\/\/(?:www\.)?instagram\.com\/([a-zA-Z0-9_.]+)"
                                                                                class="form-control"
                                                                                v-model="instagram_uz"
                                                                                name="instagram"
